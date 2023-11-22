@@ -13,14 +13,14 @@ struct County {
 	string state;
 	pair<string, string> cost;
 	int severity;
-	double visibility;
-	string weather;
-	bool crossing;
-	bool junction;
-	bool station;
-	bool stop;
-	bool signal;
-	bool day;
+	vector<double> visibility;
+	map<string, int> weather;
+	int crossing;
+	int junction;
+	int station;
+	int stop;
+	int signal;
+	int day;
 
 	County(string county, string state, int severity, vector<double> visibility, map<string, int> weather, int crossing, int junction, int station, int stop, int signal, int day, int night);
 	//int = count the number of crashes that are present in crossings, junctions, stations, stops, signals
