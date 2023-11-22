@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Traffic-is-Bad/v17
+/csv/US_Accidents_2022.csv
+/csv/US_Accidents_2022.zip
