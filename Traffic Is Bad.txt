@@ -2,10 +2,7 @@ Traffic Is Bad
 
 Seperate US map into counties (use a pair of state and county because mutliple states can have the same county)
 
-Use API:
-	OpenStreetMap:
-	https://www.openstreetmap.org/#map=8/28.546/-82.875
-	
+Use API:	
 	Bridges implements Open Street
 	https://bridgesuncc.github.io/tutorials/Data_OSM.html
 
