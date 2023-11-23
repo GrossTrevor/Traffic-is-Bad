@@ -10,7 +10,7 @@ using std::pair;
 using std::make_pair;
 using std::stod;
 
-struct County {
+class County {
 	string county;
 	string state;
 	pair<string, string> cost;
@@ -23,7 +23,7 @@ struct County {
 	int signal;
 	int day;
 	int night;
-
+private:
 	County();
 	void ChangeWeather(string w_state);
 	void AddVisibility(string visible);
