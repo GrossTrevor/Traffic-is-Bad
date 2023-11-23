@@ -31,8 +31,10 @@ void County::ChangeWeather(string w_state) {
 	//cannot use "else" because some crashes do not have some data points -> ensure they don't add things if they don't have the data 
 }
 
-void County::AddVisibility(double visible) {
-	visibility.push_back(visible);
+void County::AddVisibility(string visible) {
+	if (visible != "") {
+		visibility.push_back(stod(visible));
+	}
 }
 
 void County::AddDayOrNight(string time) {
@@ -45,18 +47,36 @@ void County::AddDayOrNight(string time) {
 	//cannot use "else" because some crashes do not have some data points -> ensure they don't add things if they don't have the data 
 }
 
-void County::AddCrossing() {
-	crossing++;
+void County::AddCrossing(string line) {
+	if (line == "True") {
+		crossing++;
+	}
 }
 
-void County::AddJunction() {
-	junction++;
+void County::AddJunction(string line) {
+	if (line == "True") {
+		junction++;
+	}
 }
 
-void County::AddStop() {
-	stop++;
+void County::AddStop(string line) {
+	if (line == "True") {
+		stop++;
+	}
 }
 
-void County::AddSignal() {
-	signal++;
+void County::AddSignal(string line) {
+	if (line == "True") {
+		signal++;
+	}
+}
+
+void County::AddSeverity(string s) {
+	if (s != "") {
+		severity = s;
+	}
+}
+
+void County::AddCountyAndState(string county, string state) {
+	cost = make_pair(county, state);
 }

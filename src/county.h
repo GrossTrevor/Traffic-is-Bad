@@ -8,6 +8,7 @@ using std::string;
 using std::vector;
 using std::pair;
 using std::make_pair;
+using std::stod;
 
 struct County {
 	string county;
@@ -26,10 +27,12 @@ struct County {
 	County();
 	void ChangeWeather(string w_state);
 	void AddVisibility(double visible);
-	void AddCrossing();
-	void AddJunction();
-	void AddStop();
-	void AddSignal();
+	void AddCrossing(string line);
+	void AddJunction(string line);
+	void AddStop(string line);
+	void AddSignal(string line);
+	void AddSeverity(int s);
+	void AddCountyAndState(string county, string state);
 
 	//County(string county, string state, int severity, vector<double> visibility, map<string, int> weather, int crossing, int junction, int stop, int signal, int day, int night);
 
