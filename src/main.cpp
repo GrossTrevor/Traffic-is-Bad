@@ -14,10 +14,19 @@ using std::ifstream;
 
 
 int main() {
+
+	//future work!!!!!!!!!!
+	//make vector of county objects, check if county + state is already in heap/hash (using the two get functions to check if the state and county are correct)
+	//if not, make new county obj, then add to heap/hash
+	//if it is, get obj and add to it
+
+
 	ifstream infile("US_Accidents_2022_Data.csv"); 
 	string line = "";
 	string state = "";
 
+
+	//right now, making obj for every crash -> not wanted, no way of knowing county is already created 
 	while (!infile.eof()) {
 		County c_obj;
 
