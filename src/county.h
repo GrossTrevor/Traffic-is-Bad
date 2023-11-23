@@ -24,6 +24,12 @@ struct County {
 	int night;
 
 	County();
+	void ChangeWeather(string w_state);
+	void AddVisibility(double visible);
+	void AddCrossing();
+	void AddJunction();
+	void AddStop();
+	void AddSignal();
 
 	//County(string county, string state, int severity, vector<double> visibility, map<string, int> weather, int crossing, int junction, int stop, int signal, int day, int night);
 
