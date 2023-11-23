@@ -13,20 +13,6 @@ using std::vector;
 using std::ifstream; 
 
 
-//void ReadFile(string filename)
-//{
-//    fstream filename;
-//    filename.open("C:\Users\lduli\OneDrive\Documents\COP3530-DSA\US_Accidents_2022.csv", ios::in);
-//    string line;
-//    while (getline(filename, line))
-//    {
-//        int pos = line.find('\n');
-//        int from = line.substr(0, pos);
-//        int to = line.substr(pos);
-//        
-//    }
-//}
-
 int main() {
 	ifstream infile("US_Accidents_2022_Data.csv"); 
 	string line = "";
@@ -54,6 +40,9 @@ int main() {
 		c_obj.AddSignal(line);
 		getline(infile, line);
 		c_obj.AddDayOrNight(line);
+
+		//add to heap
+		//add to hash
 	}
 
 
