@@ -80,3 +80,11 @@ void County::AddSeverity(string s) {
 void County::AddCountyAndState(string county, string state) {
 	cost = make_pair(county, state);
 }
+
+string County::GetState() {
+	return cost.second;
+}
+
+string County::GetCounty() {
+	return cost.first;
+}

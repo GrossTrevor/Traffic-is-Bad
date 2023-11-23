@@ -35,6 +35,9 @@ private:
 	void AddSeverity(string s);
 	void AddCountyAndState(string county, string state);
 
+	string GetCounty();
+	string GetState();
+
 	//int = count the number of crashes that are present in crossings, junctions, stations, stops, signals
 	//day or night == amount of crashes that happen during the day/night
 	//vector a visibility to get to average for each county 
