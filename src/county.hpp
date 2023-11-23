@@ -73,7 +73,7 @@ void County::AddSignal(string line) {
 
 void County::AddSeverity(string s) {
 	if (s != "") {
-		severity = s;
+		severity = stoi(s);
 	}
 }
 
