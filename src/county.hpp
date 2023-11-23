@@ -13,9 +13,10 @@ County::County() {
 	signal = 0;
 	day = 0;
 	night = 0;
+	total_crashes = 0;
 }
 
-void County::ChangeWeather(string w_state) {
+void County::ChangeWeather(string w_state) { 
 	if (w_state == "Fair") {
 		weather["Fair"] + 1;
 	}
@@ -81,6 +82,10 @@ void County::AddCountyAndState(string county, string state) {
 	cost = make_pair(county, state);
 }
 
+void County::AddToTotalCrashes() {
+	total_crashes++;
+}
+
 string County::GetState() {
 	return cost.second;
 }
@@ -88,3 +93,4 @@ string County::GetState() {
 string County::GetCounty() {
 	return cost.first;
 }
+

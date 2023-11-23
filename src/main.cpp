@@ -41,6 +41,8 @@ int main() {
 		getline(infile, line);
 		c_obj.AddDayOrNight(line);
 
+		c_obj.AddToTotalCrashes();
+
 		//add to heap
 		//add to hash
 	}

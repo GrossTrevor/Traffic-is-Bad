@@ -23,6 +23,8 @@ class County {
 	int signal;
 	int day;
 	int night;
+	int total_crashes;
+
 private:
 	County();
 	void ChangeWeather(string w_state);
@@ -34,6 +36,7 @@ private:
 	void AddSignal(string line);
 	void AddSeverity(string s);
 	void AddCountyAndState(string county, string state);
+	void AddToTotalCrashes(); 
 
 	string GetCounty();
 	string GetState();
