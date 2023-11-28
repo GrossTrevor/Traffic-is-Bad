@@ -1,4 +1,4 @@
-{
+var countiesData = {
 "type": "FeatureCollection",
 "name": "cb_2017_us_county_20m",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
