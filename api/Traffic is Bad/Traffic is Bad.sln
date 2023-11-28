@@ -7,21 +7,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Traffic is Bad", ".", "{0A0
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_52516"
-		Debug.AspNetCompiler.PhysicalPath = "..\Traffic is Bad\"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Traffic-is-Bad\api\Traffic is Bad\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52516\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_52516"
-		Release.AspNetCompiler.PhysicalPath = "..\Traffic is Bad\"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Traffic-is-Bad\api\Traffic is Bad\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52516\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "52516"
-		SlnRelativePath = "..\Traffic is Bad\"
 	EndProjectSection
 EndProject
 Global
@@ -36,6 +35,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C10091F5-EE0B-4225-88CC-1BFDA84D64B2}
+		SolutionGuid = {60B5DE42-AF93-460B-9D17-017E1B40D0F4}
 	EndGlobalSection
 EndGlobal
