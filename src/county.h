@@ -14,7 +14,7 @@ class County {
 	string county;
 	string state;
 	pair<string, string> cost;
-	int severity;
+	int total_severity;
 	vector<double> visibility;
 	map<string, int> weather;
 	int crossing;

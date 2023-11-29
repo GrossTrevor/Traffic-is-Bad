@@ -19,6 +19,7 @@ public:
 	void AddState();  //add state to the list 
 	void AddCounty(); //add county to a state 
 
+
 	bool CheckState();  //check if state already exists 
 	bool CheckCounty(); //check if county already exists 
 };
