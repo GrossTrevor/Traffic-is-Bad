@@ -6,6 +6,12 @@ County::County() {
 	weather["Mostly Cloudy"] = 0;
 	weather["Cloudy"] = 0;
 	weather["Partly Cloudy"] = 0;
+	weather["Fog"] = 0;
+	weather["Shallow Fog"] = 0;
+	weather["Haze"] = 0;
+	weather["Light Rain"] = 0;
+	weather["Rain"] = 0;
+	weather["Heavy Rain"] = 0;
 
 	crossing = 0;
 	junction = 0;
