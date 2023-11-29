@@ -98,3 +98,60 @@ string County::GetCounty() {
 	return cost.first;
 }
 
+int County::GetAvgSeverity() {
+	return total_severity / total_crashes; 
+}
+
+int County::GetAvgVisibility() {
+	int temp = 0;
+	for (int i = 0; i < visibility.size(); i++) {
+		temp += vibility[i];
+	}
+	return temp / visibility.size();
+}
+
+int County::GetWeather(string w_cond) {
+	if (w_cond == "Fair") {
+		return weather["Fair"];
+	}
+	else if (w_cond = "Cloudy") {
+		return weather["Cloudy"];
+	}
+	else if (w_cond = "Rain") {
+		return weather["Rain"];
+	}
+	else if (w_cond = "Fog") {
+		return weather["Fog"];
+	}
+	else if (w_cond = "Snow") {
+		return weather["Snow"];
+	}
+}
+
+int County::GetCrossing() {
+	return crossing;
+}
+
+int County::GetJunction() {
+	return junctions;
+}
+
+int County::GetStop() {
+	return stop;
+}
+
+int County::GetSignal() {
+	return signal;
+}
+
+int County::GetDay() {
+	return day;
+}
+
+int County::GetNight() {
+	return night;
+}
+
+int County::GetTotalCrashes() {
+	return total_crashes;
+}

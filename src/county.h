@@ -41,6 +41,17 @@ private:
 	string GetCounty();
 	string GetState();
 
+	int GetAvgSeverity();
+	int GetAvgVisibility();
+	int GetWeather(string w_cond);
+	int GetCrossing();
+	int GetJunction();
+	int GetStop();
+	int GetSignal();
+	int GetDay();
+	int GetNight();
+	int GetTotalCrashes();
+
 	//int = count the number of crashes that are present in crossings, junctions, stations, stops, signals
 	//day or night == amount of crashes that happen during the day/night
 	//vector a visibility to get to average for each county 
