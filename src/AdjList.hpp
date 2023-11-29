@@ -10,14 +10,26 @@ AdjList::~AdjList() {
 	state_to_county.clear();
 }
 
-void AdjList::AddCounty(string state, County county) { 
+void AdjList::AddCounty(string state, County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
 	//if county isn't in the specific state 
 	if (!CheckCounty(state, county)) {
+		EditCounty(county, severity, visibility, w_con, crossing, junction, stop, signal, time);
 		states_to_county[state].push_back(county); 
 	}
 	else {
-		//edit the county directly 
+		EditCounty(county, severity, visibility, w_con, crossing, junction, stop, signal, time);
 	}
+}
+
+void AdjList::EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
+	county.AddSeverity(severity); 
+	county.AddVisibility(visibility); 
+	county.ChangeWeather(w_con);
+	county.AddCrossing(crossing);
+	county.AddJunction(junction);
+	county.AddStop(stop);
+	county.AddSignal(signal);
+	county.AddDayOrNight(time);
 }
 
 //return true if not found in map already
