@@ -28,6 +28,7 @@ int main() {
 
 	//right now, making obj for every crash -> not wanted, no way of knowing county is already created 
 	while (!infile.eof()) {
+		//search in structures here, then add or edit the county 
 		County c_obj;
 
 		getline(infile, line, ','); 
