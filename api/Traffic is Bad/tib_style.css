@@ -11,8 +11,8 @@ html, body {
 }
 
 #map {
-    width: 1920px;
-    height: 500px;
+    width: 100%;
+    height: 61%;
 }
 
 .info {
@@ -43,6 +43,167 @@ html, body {
         opacity: 0.7;
     }
 
+.page {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.page_title {
+    text-align: left;
+    margin-right: 2.6%;
+}
+
+    .page_title h1 {
+        margin: 0 0 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 72px;
+        font-weight: bold;
+        letter-spacing: 3px;
+    }
+
+/*COPIED CSS*/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.toggle-switch-container {
+    align-content: center;
+    padding: 0px;
+    margin-top: 6.5%;
+    margin-right: 8%;
+}
+
+.toggle-switch {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 10px;
+    position: relative;
+}
+
+    .toggle-switch input {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+        .toggle-switch input:checked {
+            z-index: 1;
+        }
+
+            .toggle-switch input:checked + label {
+                opacity: 1;
+                cursor: default;
+            }
+
+        .toggle-switch input:not(:checked) + label:hover {
+            opacity: 0.5;
+        }
+
+    .toggle-switch label {
+        color: black;
+        opacity: 0.33;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .toggle-switch .toggle-outside {
+        height: 100%;
+        border-radius: 17px;
+        padding: 11px;
+        overflow: hidden;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .toggle-switch .toggle-inside {
+        border-radius: 50%;
+        background: #424242;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+    }
+
+.switch-vertical {
+    background-color: #00F;
+    width: 0px;
+    height: 60px;
+    margin-left: 27px;
+}
+
+    .switch-vertical input {
+        height: 100%;
+        width: 60px;
+        right: 0;
+        margin: 0;
+    }
+
+    .switch-vertical label {
+        font-size: 15px;
+        line-height: 30px;
+        display: block;
+        width: 130px;
+        height: 50%;
+        margin: 0;
+        text-align: left;
+        padding-left: 12px;
+    }
+
+    .switch-vertical .toggle-outside {
+        background: cyan;
+        position: absolute;
+        width: 23px;
+        height: 100%;
+        right: 0;
+        top: 0;
+    }
+
+    .switch-vertical .toggle-inside {
+        height: 17px;
+        left: 3px;
+        top: 3px;
+        width: 17px;
+    }
+
+    .switch-vertical input:checked ~ .toggle-outside .toggle-inside {
+        top: 3px;
+    }
+
+    .switch-vertical input ~ input:checked ~ .toggle-outside .toggle-inside {
+        top: 40px;
+    }
+/*END COPIED CSS*/
+
+.instructions {
+    text-align: left;
+    margin-right: 5%;
+}
+
+    .instructions h2 {
+        margin: 0 0 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+
+    .instructions li {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        margin: 0 0 0px;
+    }
+
+.grid-container {
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.grid-item {
+    border: .5px solid black;
+    display: grid;
+    place-items: right;
+}
+
 .reset_map {
     background-color: #FFFFFF;
     border: 0px;
@@ -50,18 +211,13 @@ html, body {
     width: 175px;
     padding: 10px 24px;
     cursor: pointer;
-    float: left;
+    float: right;
 }
 
     .reset_map:hover {
         background-color: #000000;
         color: white;
     }
-
-.page {
-    display: flex;
-    justify-content: space-between;
-}
 
 .severity {
     background-color: #000000;
@@ -260,38 +416,14 @@ html, body {
         background-color: #749995;
     }
 
-.grid-container {
-    width: 400px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    margin-right: 10px;
-}
-
-.grid-item {
-    border: .5px solid black;
-    display: grid;
-    place-items: right;
-}
-
 .clocks {
     padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
     float: right;
 }
 
-    .clocks h3{
+    .clocks h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
         margin: 0 0 5px;
         color: #777;
-    }
-
-.page_title {
-    text-align: left;
-}
-
-    .page_title h1 {
-        margin: 0 0 0px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 72px;
-        font-weight: bold;
-        letter-spacing: 3px;
     }

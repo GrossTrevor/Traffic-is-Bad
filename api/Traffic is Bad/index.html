@@ -29,6 +29,34 @@
             <h1>Traffic<br />is<br />bad.</h1>
         </div>
 
+        <div class="toggle-switch-container">
+            <div class="toggle-switch switch-vertical">
+                <input id="toggle-a" type="radio" name="switch" checked="checked" />
+                <label for="toggle-a">Max Heap</label>
+                <input id="toggle-b" type="radio" name="switch" />
+                <label for="toggle-b">Adjacency List</label>
+                <span class="toggle-outside">
+                    <span class="toggle-inside"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2>Instructions</h2>
+
+            <ul>
+                <li>This application provides various information related to car crashes in <br />the mainland United States during 2022.</li>
+                <li>Hover over a county to see details regarding the car crashes that <br />occurred in that county.</li>
+                <li>Click on a county to zoom and use the legend to differentiate frequency.</li>
+                <li>Use the buttons on the right to change the filter of the data (average <br />severity is the default).</li>
+                <li>To change the data structure used to create the graph, flip the switch to <br />the left (max heap is the default).</li>
+                <li>The execution time measures the total amount of time taken to build this <br />iteration. Notice the differences based on structure.</li>
+                <li>Thank you for using our tool! Safe travels!</li>
+                <li>Created by Trevor Gross, Samantha Bennett, and Lauren Dulick</li>
+            </ul>
+
+        </div>
+
         <div class="grid-container">
             <div class="grid-item">
                 <button class="reset_map">Reset Map</button>
@@ -82,6 +110,7 @@
     <div class="clocks">
         <h3>C++ Execution Time: </h3>
         <h3>JavaScript Execution Time: </h3>
+        <h3>Total: </h3>
     </div>
 
 </body>
