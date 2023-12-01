@@ -12,20 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        .leaflet-container {
-            height: 1080px;
-            width: 1920px;
-            max-width: 100%;
-            max-height: 100%;
-        }
-    </style>
-
+    <link rel="stylesheet" href="tib_style.css">
 
 </head>
 <body>
@@ -34,21 +21,97 @@
 
     <script type="text/javascript" src="county_data.js"></script>
 
-    <script type="text/javascript">
+    <script type="text/javascript" src="tib_script.js"></script>
 
-        const map = L.map('map').setView([37.8, -96], 5);
+    <div class="page">
 
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        <div class="page_title">
+            <h1>Traffic<br />is<br />bad.</h1>
+        </div>
 
-        /* global countiesData */
-        const geojson = L.geoJson(county_data).addTo(map);
+        <div class="toggle-switch-container">
+            <div class="toggle-switch switch-vertical">
+                <input id="toggle-a" type="radio" name="switch" checked="checked" />
+                <label for="toggle-a">Max Heap</label>
+                <input id="toggle-b" type="radio" name="switch" />
+                <label for="toggle-b">Adjacency List</label>
+                <span class="toggle-outside">
+                    <span class="toggle-inside"></span>
+                </span>
+            </div>
+        </div>
 
-    </script>
+        <div class="instructions">
+            <h2>Instructions</h2>
 
+            <ul>
+                <li>This application provides various information related to car crashes in <br />the mainland United States during 2022.</li>
+                <li>Hover over a county to see details regarding the car crashes that <br />occurred in that county.</li>
+                <li>Click on a county to zoom and use the legend to differentiate frequency.</li>
+                <li>Use the buttons on the right to change the filter of the data (average <br />severity is the default).</li>
+                <li>To change the data structure used to create the graph, flip the switch to <br />the left (max heap is the default).</li>
+                <li>The execution time measures the total amount of time taken to build this <br />iteration. Notice the differences based on structure.</li>
+                <li>Thank you for using our tool! Safe travels!</li>
+                <li>Created by Trevor Gross, Samantha Bennett, and Lauren Dulick</li>
+            </ul>
 
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <button class="reset_map">Reset Map</button>
+            </div>
+            <div class="grid-item">
+                <button class="severity">Severity</button>
+            </div>
+            <div class="grid-item">
+                <button class="regenerate">Regenerate</button>
+            </div>
+            <div class="grid-item">
+                <button class="crossing">Crossing</button>
+            </div>
+            <div class="grid-item">
+                <button class="junction">Junction</button>
+            </div>
+            <div class="grid-item">
+                <button class="signal">Signal</button>
+            </div>
+            <div class="grid-item">
+                <button class="stop">Stop</button>
+            </div>
+            <div class="grid-item">
+                <button class="day">Day</button>
+            </div>
+            <div class="grid-item">
+                <button class="night">Night</button>
+            </div>
+            <div class="grid-item">
+                <button class="poor_visibility">Poor Visibility</button>
+            </div>
+            <div class="grid-item">
+                <button class="fair_weather">Fair (Weather)</button>
+            </div>
+            <div class="grid-item">
+                <button class="cloudy_weather">Cloudy (Weather)</button>
+            </div>
+            <div class="grid-item">
+                <button class="foggy_weather">Foggy (Weather)</button>
+            </div>
+            <div class="grid-item">
+                <button class="rainy_weather">Rainy (Weather)</button>
+            </div>
+            <div class="grid-item">
+                <button class="snowy_weather">Snowy (Weather)</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clocks">
+        <h3>C++ Execution Time: </h3>
+        <h3>JavaScript Execution Time: </h3>
+        <h3>Total: </h3>
+    </div>
 
 </body>
 </html>

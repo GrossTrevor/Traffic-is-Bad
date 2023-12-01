@@ -1,0 +1,429 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.leaflet-container {
+    height: 400px;
+    width: 1920px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 61%;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+    .info h4 {
+        margin: 0 0 5px;
+        color: #777;
+    }
+
+.legend {
+    text-align: left;
+    line-height: 18px;
+    color: #555;
+}
+
+    .legend i {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-right: 8px;
+        opacity: 0.7;
+    }
+
+.page {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.page_title {
+    text-align: left;
+    margin-right: 2.6%;
+}
+
+    .page_title h1 {
+        margin: 0 0 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 72px;
+        font-weight: bold;
+        letter-spacing: 3px;
+    }
+
+/*COPIED CSS*/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.toggle-switch-container {
+    align-content: center;
+    padding: 0px;
+    margin-top: 6.5%;
+    margin-right: 8%;
+}
+
+.toggle-switch {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 10px;
+    position: relative;
+}
+
+    .toggle-switch input {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+        .toggle-switch input:checked {
+            z-index: 1;
+        }
+
+            .toggle-switch input:checked + label {
+                opacity: 1;
+                cursor: default;
+            }
+
+        .toggle-switch input:not(:checked) + label:hover {
+            opacity: 0.5;
+        }
+
+    .toggle-switch label {
+        color: black;
+        opacity: 0.33;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .toggle-switch .toggle-outside {
+        height: 100%;
+        border-radius: 17px;
+        padding: 11px;
+        overflow: hidden;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .toggle-switch .toggle-inside {
+        border-radius: 50%;
+        background: #424242;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+    }
+
+.switch-vertical {
+    background-color: #00F;
+    width: 0px;
+    height: 60px;
+    margin-left: 27px;
+}
+
+    .switch-vertical input {
+        height: 100%;
+        width: 60px;
+        right: 0;
+        margin: 0;
+    }
+
+    .switch-vertical label {
+        font-size: 15px;
+        line-height: 30px;
+        display: block;
+        width: 130px;
+        height: 50%;
+        margin: 0;
+        text-align: left;
+        padding-left: 12px;
+    }
+
+    .switch-vertical .toggle-outside {
+        background: cyan;
+        position: absolute;
+        width: 23px;
+        height: 100%;
+        right: 0;
+        top: 0;
+    }
+
+    .switch-vertical .toggle-inside {
+        height: 17px;
+        left: 3px;
+        top: 3px;
+        width: 17px;
+    }
+
+    .switch-vertical input:checked ~ .toggle-outside .toggle-inside {
+        top: 3px;
+    }
+
+    .switch-vertical input ~ input:checked ~ .toggle-outside .toggle-inside {
+        top: 40px;
+    }
+/*END COPIED CSS*/
+
+.instructions {
+    text-align: left;
+    margin-right: 5%;
+}
+
+    .instructions h2 {
+        margin: 0 0 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+
+    .instructions li {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        margin: 0 0 0px;
+    }
+
+.grid-container {
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.grid-item {
+    border: .5px solid black;
+    display: grid;
+    place-items: right;
+}
+
+.reset_map {
+    background-color: #FFFFFF;
+    border: 0px;
+    color: black;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .reset_map:hover {
+        background-color: #000000;
+        color: white;
+    }
+
+.severity {
+    background-color: #000000;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .severity:hover {
+        background-color: #000000;
+    }
+
+.regenerate {
+    background-color: #FFFFFF;
+    border: 0px;
+    color: black;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .regenerate:hover {
+        background-color: #000000;
+        color: white;
+    }
+
+.crossing {
+    background-color: #C9248C;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .crossing:hover {
+        background-color: #800B55;
+    }
+
+.junction {
+    background-color: #19C3AC;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .junction:hover {
+        background-color: #0B8070;
+    }
+
+.signal {
+    background-color: #04AA6D;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .signal:hover {
+        background-color: #3e8e41;
+    }
+
+.stop {
+    background-color: #D10F0F;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .stop:hover {
+        background-color: #890D0D;
+    }
+
+.day {
+    background-color: #CDB922;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .day:hover {
+        background-color: #A39007;
+    }
+
+.night {
+    background-color: #C225F1;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .night:hover {
+        background-color: #7E0DA1;
+    }
+
+.poor_visibility {
+    background-color: #95C185;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .poor_visibility:hover {
+        background-color: #709363;
+    }
+
+.fair_weather {
+    background-color: #F19727;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .fair_weather:hover {
+        background-color: #C57024;
+    }
+
+.cloudy_weather {
+    background-color: #ADADAD;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .cloudy_weather:hover {
+        background-color: #6E6E6E;
+    }
+
+.foggy_weather {
+    background-color: #C9B4A2;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .foggy_weather:hover {
+        background-color: #907B6B;
+    }
+
+.rainy_weather {
+    background-color: #2962EC;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .rainy_weather:hover {
+        background-color: #1F48AC;
+    }
+
+.snowy_weather {
+    background-color: #AAD1CD;
+    border: 0px;
+    color: white;
+    width: 175px;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: right;
+}
+
+    .snowy_weather:hover {
+        background-color: #749995;
+    }
+
+.clocks {
+    padding: 6px 8px;
+    float: right;
+}
+
+    .clocks h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        margin: 0 0 5px;
+        color: #777;
+    }
