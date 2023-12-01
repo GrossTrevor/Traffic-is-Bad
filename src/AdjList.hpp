@@ -13,6 +13,7 @@ AdjList::~AdjList() {
 void AdjList::AddCounty(string state, County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
 	//if county isn't in the specific state 
 	if (!CheckCounty(state, county)) {
+		//must create county object then edit it
 		EditCounty(county, severity, visibility, w_con, crossing, junction, stop, signal, time);
 		states_to_county[state].push_back(county); 
 	}
