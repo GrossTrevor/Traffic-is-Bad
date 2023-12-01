@@ -21,5 +21,5 @@ public:
 
 
 	bool CheckState(string state);  //check if state already exists  
-	bool CheckCounty(string state, string county); //check if county already exists 
+	bool CheckCounty(string state, County county); //check if county already exists 
 };
