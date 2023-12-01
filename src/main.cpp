@@ -15,10 +15,13 @@ using std::ifstream;
 
 int main() {
 
-	//future work!!!!!!!!!!
-	//make vector of county objects, check if county + state is already in heap/hash (using the two get functions to check if the state and county are correct)
-	//if not, make new county obj, then add to heap/hash
-	//if it is, get obj and add to it
+	//Adding to the structure guide/plan:
+	// make seperate variables for each line OR make a vector and call each item that way 
+	//get state and county names
+	//search through either structure to see if county is already in with the specific state 
+	//if state not in the sturcture, add the state with the county
+	//if the county is not in the state but the state already exists, add the county to the state 
+	//if the county already exists, edit the counts of the county with the new data given
 
 
 	ifstream infile("US_Accidents_2022_Data.csv"); 
@@ -59,7 +62,7 @@ int main() {
 		c_obj.AddToTotalCrashes();
 
 		//add to heap
-		//add to hash
+		//add to adjlist
 	}
 
 
