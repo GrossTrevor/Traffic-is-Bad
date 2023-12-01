@@ -16,8 +16,8 @@ public:
 	AdjList();
 	~AdjList();
 
-	void AddState(string state, County county);  //add state to the list  
-	void AddCounty(string state, County county); //add county to a state, state already exists  
+	void AddCounty(string state, County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); //add county to a state, state already exists   
+	void EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time);
 
 
 	bool CheckState(string state);  //check if state already exists  

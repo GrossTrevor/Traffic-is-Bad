@@ -33,7 +33,7 @@ void AdjList::EditCounty(County county, string severity, string visibility, stri
 }
 
 //return true if not found in map already
-bool CheckCounty(string state, County county) { 
+bool AdjList::CheckCounty(string state, County county) { 
 	if (find(states_to_county[state].begin(), states_to_county[state].end(), county) == states_to_county[state].end()) {
 		return true;
 	}
@@ -43,9 +43,9 @@ bool CheckCounty(string state, County county) {
 }
 
 //return true if key not found in map 
-bool CheckState(string state) {
+bool AdjList::CheckState(string state) {
 	if (states_to_county.find(state) == states_to_county.end()) {
-		return true
+		return true;
 	}
 	else {
 		return false;
