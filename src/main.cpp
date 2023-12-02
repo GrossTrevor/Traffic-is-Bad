@@ -57,8 +57,10 @@ int main() {
 		info.push_back(line);			//sunrise/sunset = 9
 
 		//add to heap
+		
+		
 		//add to adj list
-
+		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
 	}
 
 
