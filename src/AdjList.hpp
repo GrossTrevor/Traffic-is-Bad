@@ -2,7 +2,7 @@
 
 AdjList::AdjList() {
 	//create empty map
-	state_to_county = map<string, vector<County>>{};
+	state_to_county = map<string, vector<County>>();
 }
 
 AdjList::~AdjList() {

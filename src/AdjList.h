@@ -13,6 +13,7 @@ using std::string;
 
 class AdjList {
 	map<string, vector<County>> state_to_county;
+	string test;
 public:
 	AdjList();
 	~AdjList();
