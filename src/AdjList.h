@@ -10,7 +10,6 @@ using std::map;
 using std::vector; 
 using std::string;
 
-using namespace std;
 
 class AdjList {
 	map<string, vector<County>> state_to_county;

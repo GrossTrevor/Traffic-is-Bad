@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <map>
 #include "county.h"
 #include "AdjList.h"
 #include "heap.h"
@@ -21,11 +20,10 @@ int main() {
 
 
 	ifstream infile("US_Accidents_2022_Data.csv"); 
-	vector<string> info; 
+	vector<string> info;
 	string line = "";
 
 
-	//right now, making obj for every crash -> not wanted, no way of knowing county is already created 
 	while (!infile.eof()) {
 		getline(infile, line, ','); 
 		info.push_back(line);			//severity = 0
