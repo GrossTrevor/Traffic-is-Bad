@@ -1,3 +1,5 @@
+#include "county.h"
+
 County::County() {
 	cost = make_pair("", "");
 	severity = 0;

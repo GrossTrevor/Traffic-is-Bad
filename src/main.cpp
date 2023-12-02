@@ -16,15 +16,6 @@ using std::ifstream;
 
 
 int main() {
-
-	//Adding to the structure guide/plan:
-	// make seperate variables for each line OR make a vector and call each item that way 
-	//get state and county names
-	//search through either structure to see if county is already in with the specific state 
-	//if state not in the sturcture, add the state with the county
-	//if the county is not in the state but the state already exists, add the county to the state 
-	//if the county already exists, edit the counts of the county with the new data given
-
 	AdjList adj_list;
 
 

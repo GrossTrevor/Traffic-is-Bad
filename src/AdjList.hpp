@@ -11,10 +11,10 @@ AdjList::~AdjList() {
 }
 
 County AdjList::GetCountyObj(string state, string county) {
-	auto itr = states_to_county.find(state);
-	for (int i = 0; i < it->second.size(); i++) { 
-		if (it->second[i].GetCounty() == county) {
-			return it->second[i]; 
+	auto itr = state_to_county.find(state);
+	for (int i = 0; i < itr->second.size(); i++) {  
+		if (itr->second[i].GetCounty() == county) { 
+			return itr->second[i];  
 		}
 	}
 }
@@ -33,12 +33,12 @@ void AdjList::EditCounty(County county, string severity, string visibility, stri
 
 //return true if key not found in map 
 bool AdjList::CheckState(string state) {
-	if (states_to_county.find(state) == states_to_county.end()) {
+	if (state_to_county.find(state) == state_to_county.end()) {
 		return true;
 	}
-	else {
-		return false;
-	}
+
+	return false;
+
 }
 
 //return true if not found in map already
@@ -59,9 +59,9 @@ void AdjList::AddCounty(string state, string county, string severity, string vis
 	if (CheckCounty(state, county)) {
 		//must create county object then edit it
 		County county_obj;
-		count_obj.AddCountyAndState(county, state);
+		county_obj.AddCountyAndState(county, state); 
 		EditCounty(county_obj, severity, visibility, w_con, crossing, junction, stop, signal, time);
-		states_to_county[state].push_back(county); 
+		state_to_county[state].push_back(county);
 	}
 	else {
 		EditCounty(GetCountyObj(state, county), severity, visibility, w_con, crossing, junction, stop, signal, time);

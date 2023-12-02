@@ -4,6 +4,7 @@
 #include <iomanip> 
 #include <algorithm> 
 #include "county.h"
+#include "AdjList.hpp"
 
 using std::map;
 using std::vector; 
@@ -11,7 +12,7 @@ using std::string;
 
 
 class AdjList {
-	map<string, vector<County>> states_to_county;
+	map<string, vector<County>> state_to_county;
 public:
 	AdjList();
 	~AdjList();
