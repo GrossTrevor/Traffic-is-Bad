@@ -25,41 +25,28 @@ int main() {
 
 
 	ifstream infile("US_Accidents_2022_Data.csv"); 
+	vector<strings> info;
 	string line = "";
-	string state = "";
-	string severity = "";
-	string county = "";
 
 
 	//right now, making obj for every crash -> not wanted, no way of knowing county is already created 
 	while (!infile.eof()) {
 		County c_obj;
 
-		getline(infile, severity, ','); 
-		c_obj.AddSeverity(severity);  
-		getline(infile, county, ',');  
-		getline(infile, state, ',');  
-		c_obj.AddCountyAndState(county, state); 
+		getline(infile, line, ','); 
+		getline(infile, line, ',');  
+		getline(infile, line, ',');  
 
 		//search through data structures here, edit or add to county 
 		//use state and county strings to search 
 
 		getline(infile, line, ',');
-		c_obj.AddVisibility(line); 
 		getline(infile, line, ',');
-		c_obj.ChangeWeather(line);
 		getline(infile, line, ',');
-		c_obj.AddCrossing(line);
 		getline(infile, line, ','); 
-		c_obj.AddJunction(line);
 		getline(infile, line, ','); 
-		c_obj.AddStop(line);
 		getline(infile, line, ','); 
-		c_obj.AddSignal(line);
 		getline(infile, line);
-		c_obj.AddDayOrNight(line);
-
-		c_obj.AddToTotalCrashes();
 
 		//add to heap
 		//add to adjlist

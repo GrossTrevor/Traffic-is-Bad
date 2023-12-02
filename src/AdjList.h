@@ -16,10 +16,10 @@ public:
 	AdjList();
 	~AdjList();
 
-	void AddCounty(string state, County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); //add county to a state, state already exists   
+	void AddCounty(string state, string county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); //add county to a state, state already exists   
 	void EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time);
 
 
 	bool CheckState(string state);  //check if state already exists  
-	bool CheckCounty(string state, County county); //check if county already exists 
+	bool CheckCounty(string state, string county); //check if county already exists 
 };

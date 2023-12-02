@@ -10,15 +10,24 @@ AdjList::~AdjList() {
 	state_to_county.clear();
 }
 
-void AdjList::AddCounty(string state, County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
+County AdjList::GetCountyObj(string state, string county) {
+	auto itr = states_to_county.find(state);
+	for (int i = 0; i < it->second.size(); i++) { 
+		if (it->second[i].GetCounty() == county) {
+			return it->second[i]; 
+		}
+	}
+}
+
+void AdjList::AddCounty(string state, string county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
 	//if county isn't in the specific state 
-	if (!CheckCounty(state, county)) {
+	if (CheckCounty(state, county)) {
 		//must create county object then edit it
 		EditCounty(county, severity, visibility, w_con, crossing, junction, stop, signal, time);
 		states_to_county[state].push_back(county); 
 	}
 	else {
-		EditCounty(county, severity, visibility, w_con, crossing, junction, stop, signal, time);
+		EditCounty(GetCountyObj(state, county), severity, visibility, w_con, crossing, junction, stop, signal, time);
 	}
 }
 
@@ -31,16 +40,20 @@ void AdjList::EditCounty(County county, string severity, string visibility, stri
 	county.AddStop(stop);
 	county.AddSignal(signal);
 	county.AddDayOrNight(time);
+	county.AddToTotalCrashes(); 
 }
 
 //return true if not found in map already
-bool AdjList::CheckCounty(string state, County county) { 
-	if (find(states_to_county[state].begin(), states_to_county[state].end(), county) == states_to_county[state].end()) {
-		return true;
+bool AdjList::CheckCounty(string state, string county) { 
+	if (!CheckState) {
+		auto it = state_to_county.find(state);
+		for (int i = 0; i < it->second.size(); i++) {
+			if (it->second[i].GetCounty() == county) {
+				return false;
+			}
+		}
 	}
-	else {
-		return false;
-	}
+	return true;
 }
 
 //return true if key not found in map 
