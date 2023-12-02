@@ -4,6 +4,8 @@
 #include <vector>
 #include <algorithm>
 #include "county.h"
+#include "AdjList.h"
+#include "heap.h"
 
 using std::cin;
 using std::cout;
@@ -23,33 +25,40 @@ int main() {
 	//if the county is not in the state but the state already exists, add the county to the state 
 	//if the county already exists, edit the counts of the county with the new data given
 
+	AdjList adj_list;
+
 
 	ifstream infile("US_Accidents_2022_Data.csv"); 
-	vector<strings> info;
+	vector<string> info; 
 	string line = "";
 
 
 	//right now, making obj for every crash -> not wanted, no way of knowing county is already created 
 	while (!infile.eof()) {
-		County c_obj;
-
 		getline(infile, line, ','); 
+		info.push_back(line);			//severity = 0
 		getline(infile, line, ',');  
+		info.push_back(line);			//county = 1
 		getline(infile, line, ',');  
-
-		//search through data structures here, edit or add to county 
-		//use state and county strings to search 
-
+		info.push_back(line);			//state = 2
 		getline(infile, line, ',');
+		info.push_back(line);			//visibility = 3
 		getline(infile, line, ',');
+		info.push_back(line);			//weather = 4
 		getline(infile, line, ',');
+		info.push_back(line);			//crossing = 5
 		getline(infile, line, ','); 
+		info.push_back(line);			//junction = 6
 		getline(infile, line, ','); 
+		info.push_back(line);			//stop = 7
 		getline(infile, line, ','); 
+		info.push_back(line);			//traffic signal = 8
 		getline(infile, line);
+		info.push_back(line);			//sunrise/sunset = 9
 
 		//add to heap
-		//add to adjlist
+		//add to adj list
+
 	}
 
 
