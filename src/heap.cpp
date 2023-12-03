@@ -2,7 +2,7 @@
 
 // constructor
 MaxHeap::MaxHeap() {
-	numStates = 0;
+	stateVect = vector<State>(); 
 }
 
 // destructor
@@ -10,16 +10,16 @@ MaxHeap::~MaxHeap() {
 	stateVect.clear(); 
 }
 
-// recursively heapify up
+// heapify up
 void MaxHeap::HeapifyUp(int index) {
-	while (index != 0) 
-	{
-		int parentIndex = (index - 1) / 2;
-		if (stateVect[index].GetAvgSeverity() > stateVect[parentIndex].GetAvgSeverity())
-		{
-			swap(stateVect[index], stateVect[parentIndex]);
-			HeapifyUp(parentIndex);
-		}
+	int child = index - 1;
+	int parent = (child - 1) / 2;
+
+	while (parent >= 0 && stateVect[child].GetAvSeverity() > stateVect[parent].GetAvSeverity()) 
+	{		
+		swap(stateVect[child], stateVect[parent]);
+		child = parent;
+		parent = (child - 1) / 2;
 	}
 }
 
@@ -29,11 +29,11 @@ void MaxHeap::HeapifyDown(int index) {
 	int rightChild = 2 * index + 2;
 	int largestIndex = index;
 
-	if (leftChild < numStates && stateVect[leftChild].GetAvgSeverity() > stateVect[largestIndex].GetAvgSeverity()) 
+	if (leftChild < stateVect.size() && stateVect[leftChild].GetAvSeverity() > stateVect[largestIndex].GetAvSeverity())
 	{
 		largestIndex = leftChild;
 	}
-	if (rightChild < numStates && stateVect[rightChild].GetAvgSeverity() > stateVect[largestIndex].GetAvgSeverity())
+	if (rightChild < stateVect.size() && stateVect[rightChild].GetAvSeverity() > stateVect[largestIndex].GetAvSeverity())
 	{
 		largestIndex = rightChild;
 	}
@@ -46,12 +46,12 @@ void MaxHeap::HeapifyDown(int index) {
 
 // get the amount of counties in the heap
 int MaxHeap::GetHeapSize() {
-	return numStates;
+	return stateVect.size();
 }
 
 // check if heap is empty
 bool MaxHeap::EmptyHeap() {
-	if (numStates > 0)
+	if (stateVect.size() > 0) 
 	{
 		return false;
 	}
@@ -60,7 +60,7 @@ bool MaxHeap::EmptyHeap() {
 
 //return true if state and county is found in heap 
 bool MaxHeap::SearchCounty(string county, string state) {
-	for (int i = 0; i < numStates; i++) {
+	for (int i = 0; i < stateVect.size(); i++) {
 		if (stateVect[i].GetName() == state) { 
 			return stateVect[i].IsCountyHere(county); 
 		}
@@ -69,7 +69,7 @@ bool MaxHeap::SearchCounty(string county, string state) {
 }
 
 bool MaxHeap::SearchState(string state) {
-	for (int i = 0; i < numStates; i++) {
+	for (int i = 0; i < stateVect.size(); i++) { 
 		if (stateVect[i].GetName() == state) {
 			return true;
 		}
@@ -90,7 +90,7 @@ bool MaxHeap::SearchState(string state) {
 //}
 
 State MaxHeap::GetState(string state) { 
-	for (int i = 0; i < numStates; i++) {
+	for (int i = 0; i < stateVect.size(); i++) { 
 		if (stateVect[i].GetName() == state) {
 			return stateVect[i];
 		}
@@ -132,28 +132,30 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 	//if state is not found in heap 
 	if (!SearchState(state)) {
 		State temp;
-		temp.AddTotalSeverity(severity);
+		temp.AddTotalSeverity(severity, county_); 
 		temp.SetName(state); 
 		County c_temp;
 		c_temp = GetCountyObj(county_, state, severity, visibility, w_con, crossing, junction, stop, signal, time);  
 		temp.AddCounty(c_temp); 
-		stateVect.push_back(temp); 
-		numStates++; 
+		stateVect.push_back(temp);  
 	}
 	else if (!SearchCounty(county_, state)){ //if state is found in heap but county is not found in the state 
 		County c_temp; 
 		c_temp = GetCountyObj(county_, state, severity, visibility, w_con, crossing, junction, stop, signal, time); 
 		State temp = GetState(state);
 		temp.AddCounty(c_temp); 
-		temp.AddTotalSeverity(severity);
+		temp.AddTotalSeverity(severity, county_); 
 	}
 	else { //state is found in heap and county already exists within state 
 		State temp = GetState(state);
-		temp.AddTotalSeverity(severity);
+		temp.AddTotalSeverity(severity, county_); 
 		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); 
 	}
-	HeapifyUp(numStates);
-	cout << "here4" << endl;
+	HeapifyUp(stateVect.size());
+}
+
+void MaxHeap::PrintStates() {
+
 }
 
 // remove a county from the heap then heapify down

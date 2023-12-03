@@ -25,4 +25,5 @@ public:
 	bool IsCountyHere(string county);
 	County FindCounty(string county); 
 	string GetName(); 
+	void PrintCounties();
 };
