@@ -15,7 +15,20 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-    const contents = props ? `<b>${props.COUNTY}, ${props.STATE}</b><br />Average crash severity: ${props.SEVERITY}` : 'Hover over a county';
+    const contents = props ? `<b>${props.COUNTY}, ${props.STATE}</b><br />
+                              Average crash severity: ${props.SEVERITY}<br />
+                              Crossing: ${props.CROSSING}<br />
+                              Junction: ${props.JUNCTION}<br />
+                              Signal: ${props.SIGNAL}<br />
+                              Stop: ${props.STOP}<br />
+                              Day: ${props.DAY}<br />
+                              Night: ${props.NIGHT}<br />
+                              Poor Visibility: ${props.POOR_VISIBILITY}<br />
+                              Fair (Weather): ${props.WFAIR}<br />
+                              Cloudy (Weather): ${props.WCLOUDY}<br />
+                              Foggy (Weather): ${props.WFOG}<br />
+                              Rainy (Weather): ${props.WRAIN}<br />
+                              Snowy (Weather): ${props.WSNOW}<br />` : 'Hover over a county';
     this._div.innerHTML = `<h4>Information Panel</h4>${contents}`;
 };
 
