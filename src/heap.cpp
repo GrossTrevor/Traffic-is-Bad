@@ -153,6 +153,7 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); 
 	}
 	HeapifyUp(numStates);
+	cout << "here4" << endl;
 }
 
 // remove a county from the heap then heapify down

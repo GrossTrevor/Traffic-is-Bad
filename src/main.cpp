@@ -23,6 +23,7 @@ int main() {
 
 	MaxHeap heap;
 
+	int count = 0;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
 	vector<string> info;
@@ -50,6 +51,9 @@ int main() {
 		info.push_back(line);			//traffic signal = 8
 		getline(infile, line);
 		info.push_back(line);			//sunrise/sunset = 9
+
+		count++;
+		cout << count << endl;
 
 		//add to heap
 		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
