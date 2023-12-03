@@ -15,7 +15,6 @@ using std::swap;
 
 class MaxHeap
 {
-private:
 	vector<County> countyVect;
 	int numCounties;
 	void HeapifyUp(int index);

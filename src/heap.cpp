@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include "heap.h"
 
 // constructor
@@ -75,6 +75,8 @@ County MaxHeap::GetCounty(string county, string state) {
 			return countyVect[i];
 		}
 	}
+	County obj;
+	return obj; 
 }
 
 County MaxHeap::GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {

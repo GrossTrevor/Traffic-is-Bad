@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include "county.h"
 
 County::County() {
@@ -117,18 +117,19 @@ int County::GetWeather(string w_cond) {
 	if (w_cond == "Fair") {
 		return weather["Fair"];
 	}
-	else if (w_cond = "Cloudy") {
+	else if (w_cond == "Cloudy") {
 		return weather["Cloudy"];
 	}
-	else if (w_cond = "Rain") {
+	else if (w_cond == "Rain") {
 		return weather["Rain"];
 	}
-	else if (w_cond = "Fog") {
+	else if (w_cond == "Fog") {
 		return weather["Fog"];
 	}
-	else if (w_cond = "Snow") {
+	else if (w_cond == "Snow") {
 		return weather["Snow"];
 	}
+	return -1;
 }
 
 int County::GetCrossing() {

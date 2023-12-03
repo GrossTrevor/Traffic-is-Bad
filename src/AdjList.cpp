@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include "AdjList.h"
 
 AdjList::AdjList() {
@@ -18,6 +18,8 @@ County AdjList::GetCountyObj(string state, string county) {
 			return itr->second[i];  
 		}
 	}
+	County obj; 
+	return obj; 
 }
 
 void AdjList::EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
