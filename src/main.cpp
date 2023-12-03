@@ -23,7 +23,6 @@ using json::parse;
 
 
 int main() {
-	//cout << "work pls I love you ." << endl;
 	AdjList adj_list;
 
 	//MaxHeap heap;
@@ -65,11 +64,6 @@ int main() {
 		//add to adj list
 		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 
-		t = info[2];
-		c = info[1];
-
-		/*cout << t << ": " << c << endl;
-		cout << adj_list.GetCountyObj(info[2], info[1]).GetAvgVisibility() << endl;*/
 
 		info.clear();
 		//x--;
@@ -77,7 +71,6 @@ int main() {
 
 	adj_list.PrintTesting(); 
 
-	//cout << "end" << endl;
 
 	//make json
 	ifstream county_data("../api/Traffic is Bad/county_data.json");

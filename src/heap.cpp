@@ -142,27 +142,55 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 	else if (!SearchCounty(county_, state)){ //if state is found in heap but county is not found in the state 
 		County c_temp; 
 		c_temp = GetCountyObj(county_, state, severity, visibility, w_con, crossing, junction, stop, signal, time); 
-		State temp = GetState(state);
-		temp.AddCounty(c_temp); 
-		temp.AddTotalSeverity(severity, county_); 
+
+		for (int i = 0; i < stateVect.size(); i++) {
+			if (stateVect[i].GetName() == state) {
+				stateVect[i].AddCounty(c_temp);
+				stateVect[i].AddTotalSeverity(severity, county_);
+			}
+		}
 	}
 	else { //state is found in heap and county already exists within state 
-		State temp = GetState(state);
+		for (int i = 0; i < stateVect.size(); i++) {
+			if (stateVect[i].GetName() == state) {
+				for (int j = 0; j < stateVect[i].GetNumCounties(); j++) {
+					if (stateVect[i].FindCounty(county_).GetCounty() == county_) {
+						stateVect[i].AddTotalSeverity(severity, county_);
+
+						vector<County> temp = stateVect[i].GetCountyVect();
+
+						temp[j].AddSeverity(severity);
+						temp[j].AddVisibility(visibility); 
+						temp[j].ChangeWeather(w_con); 
+						temp[j].AddCrossing(crossing); 
+						temp[j].AddJunction(junction);  
+						temp[j].AddStop(stop); 
+						temp[j].AddSignal(signal); 
+						temp[j].AddDayOrNight(time); 
+						temp[j].AddToTotalCrashes(); 
+					}
+				}
+				//stateVect[i].IsCountyHere(county);
+			}
+		}
+
+		/*State temp = GetState(state);
 		temp.AddTotalSeverity(severity, county_); 
-		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); 
+		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); */
 	}
 	HeapifyUp(stateVect.size());
 }
 
-void MaxHeap::PrintStates() {
-
-}
+//void MaxHeap::PrintStates() {
+//	while()
+//}
 
 // remove a county from the heap then heapify down
-//void MaxHeap::Remove() {
-//	numCounties--;
-//	swap(countyVect[0], countyVect[numCounties]); 
-//	delete countyVect[numCounties];     need to add erase to make this line work 
-//	HeapifyDown(0);
-//}
+State MaxHeap::ExtractMax() {
+	swap(stateVect[0], stateVect[stateVect.size()]);
+	State temp = stateVect[stateVect.size()];
+	stateVect.pop_back();
+	HeapifyDown(0);
+	return temp;
+}
 

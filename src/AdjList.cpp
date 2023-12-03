@@ -111,14 +111,13 @@ void AdjList::AddCounty(string state, string county_, string severity, string vi
 }
 
 void AdjList::PrintTesting() {
-	cout << "working" << endl; 
 	for (auto i = state_to_county.begin(); i != state_to_county.end(); i++) {
 		cout << i->first << ": " << endl;
 		for (int j = 0; j < i->second.size(); j++) {
 			cout << i->second[j].GetCounty() << ": " << endl;
 			cout << i->second[j].GetAvgSeverity() << ", " << i->second[j].GetAvgVisibility() << ", " << i->second[j].GetWeather("Fair") << ", " << i->second[j].GetWeather("Cloudy") << ", " << i->second[j].GetWeather("Rain") << ", ";
 			cout << i->second[j].GetWeather("Fog") << ", " << i->second[j].GetWeather("Snow") << ", " << i->second[j].GetCrossing() << ", " << i->second[j].GetJunction() << ", " << i->second[j].GetStop() << ", ";
-			cout << i->second[j].GetSignal() << ", " << i->second[j].GetDay() << ", " << i->second[j].GetNight() << endl;  /* ", " << i->second[j].GetTotalCrashes() << endl;*/
+			cout << i->second[j].GetSignal() << ", " << i->second[j].GetDay() << ", " << i->second[j].GetNight() << ", " << i->second[j].GetTotalCrashes() << endl;
 		}
 		cout << endl;
 	}

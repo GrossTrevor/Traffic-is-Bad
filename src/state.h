@@ -28,5 +28,7 @@ public:
 	bool IsCountyHere(string county);
 	County FindCounty(string county); 
 	string GetName(); 
+	int GetNumCounties();
+	vector<County>& GetCountyVect();
 	void PrintCounties();
 };
