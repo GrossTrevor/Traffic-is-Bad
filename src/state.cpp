@@ -10,11 +10,16 @@ State::~State() {
 	counties.clear(); 
 }
 
-void State::AddTotalSeverity(string severity) { 
-	total_severity_counties += stod(severity);
+void State::AddTotalSeverity(string severity, string county) { 
+	if (IsCountyHere(county)) {
+		County temp = FindCounty(county);
+		total_severity_counties -= temp.GetAvgSeverity();
+		temp.AddSeverity(severity);
+		total_severity_counties += temp.GetAvgSeverity(); 
+	}
 }
 
-double State::GetAvgSeverity() { 
+double State::GetAvSeverity() { 
 	return total_severity_counties / counties.size();
 }
 
