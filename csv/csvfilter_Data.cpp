@@ -75,6 +75,7 @@ int main() {
 		getline(infile, line, ','); //traffic signal
 		sum += line + ","; 
 		getline(infile, line, ','); //turning loop
+		getline(infile, line, ',');
 		getline(infile, line, ','); //sunrise/sunset
 		sum += line; 
 		getline(infile, line); //civil twilight, nautical twilight, astronomical twilight

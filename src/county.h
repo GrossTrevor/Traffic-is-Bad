@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream>
+#include <typeinfo>
 
 using std::string;
 using std::vector;
@@ -9,12 +11,15 @@ using std::pair;
 using std::map;
 using std::make_pair;
 using std::stod;
+using std::to_string;
+using std::cout;
+using std::endl;
 
 class County {
 	string county;
 	string state;
 	pair<string, string> cost;
-	int total_severity;
+	double total_severity;
 	vector<double> visibility;
 	map<string, int> weather;
 	int crossing;
@@ -23,7 +28,7 @@ class County {
 	int signal;
 	int day;
 	int night;
-	int total_crashes;
+	double total_crashes;
 
 public:
 	County();
@@ -42,7 +47,7 @@ public:
 	string GetState();
 
 	double GetAvgSeverity();
-	int GetAvgVisibility();
+	double GetAvgVisibility();
 	int GetWeather(string w_cond);
 	int GetCrossing();
 	int GetJunction();
@@ -51,6 +56,8 @@ public:
 	int GetDay();
 	int GetNight();
 	int GetTotalCrashes();
+
+	string GetS();
 
 	//int = count the number of crashes that are present in crossings, junctions, stations, stops, signals
 	//day or night == amount of crashes that happen during the day/night

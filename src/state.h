@@ -2,11 +2,14 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream>
 #include "county.h"
 
 using std::vector; 
 using std::string; 
 using std::stod; 
+using std::cout;
+using std::endl;
 
 class State {
 	string name;

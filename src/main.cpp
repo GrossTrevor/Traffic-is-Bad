@@ -18,7 +18,7 @@ using std::ifstream;
 
 
 int main() {
-	cout << "work pls I love you ." << endl;
+	//cout << "work pls I love you ." << endl;
 	AdjList adj_list;
 
 	//MaxHeap heap;
@@ -27,8 +27,11 @@ int main() {
 	vector<string> info;
 	string line = "";
 
+	string t;
+	string c;
+	//int x = 27;
 
-	while (!infile.eof()) {
+	while (!infile.eof() /*&& x != 0*/) {
 		getline(infile, line, ','); 
 		info.push_back(line);			//severity = 0
 		getline(infile, line, ',');  
@@ -57,14 +60,22 @@ int main() {
 		//add to adj list
 		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 
+		t = info[2];
+		c = info[1];
+
+		/*cout << t << ": " << c << endl;
+		cout << adj_list.GetCountyObj(info[2], info[1]).GetAvgVisibility() << endl;*/
+
 		info.clear();
+		//x--;
 	}
 
-	//adj_list.PrintTesting(); 
+	adj_list.PrintTesting(); 
 
-	cout << "end" << endl;
+	//cout << "end" << endl;
 
 	//make json
+
 
 	return 0;
 }

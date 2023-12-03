@@ -55,8 +55,8 @@ string State::GetName() {
 	return name;
 }
 
-void State::PrintCounties() {
-	for (int i = 0; i < counties.size(); i++) {
-		cout << coutnies[i] << ", " << endl;
-	}
-}
+//void State::PrintCounties() {
+//	for (int i = 0; i < counties.size(); i++) {
+//		cout << counties[i] << ", " << endl;
+//	}
+//}
