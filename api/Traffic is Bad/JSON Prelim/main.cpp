@@ -123,7 +123,8 @@ int main() {
 		total += "\"STOP\": \"\", ";
 		total += "\"SIGNAL\": \"\", ";
 		total += "\"DAY\": \"\", ";
-		total += "\"NIGHT\": \"\" ";
+		total += "\"NIGHT\": \"\", ";
+		total += "\"POOR_VISIBILITY\": \"\" ";
 		total += "}";
 
 		std::getline(f, line);
