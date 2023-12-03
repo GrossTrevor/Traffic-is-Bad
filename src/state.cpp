@@ -55,6 +55,14 @@ string State::GetName() {
 	return name;
 }
 
+int State::GetNumCounties() {
+	return counties.size();
+}
+
+vector<County>& State::GetCountyVect() {
+	return counties;
+}
+
 //void State::PrintCounties() {
 //	for (int i = 0; i < counties.size(); i++) {
 //		cout << counties[i] << ", " << endl;
