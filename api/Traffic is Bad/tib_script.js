@@ -15,22 +15,26 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-    const contents = props ? `<b>${props.COUNTY}, ${props.STATE}</b><br />Average crash severity: ` : 'Hover over a county';
+    const contents = props ? `<b>${props.COUNTY}, ${props.STATE}</b><br />Average crash severity: ${props.SEVERITY}` : 'Hover over a county';
     this._div.innerHTML = `<h4>Information Panel</h4>${contents}`;
 };
 
 info.addTo(map);
 
+function filterMap(prop) {
+    style()
+ }
+
 
 // get color depending on population density value
 function getColor(d) {
-    return d > 1000 ? '#800026' :
-        d > 500 ? '#BD0026' :
-            d > 200 ? '#E31A1C' :
-                d > 100 ? '#FC4E2A' :
-                    d > 50 ? '#FD8D3C' :
-                        d > 20 ? '#FEB24C' :
-                            d > 10 ? '#FED976' : '#FFEDA0';
+    return d > 3.9 ? '#c70505' :
+           d > 3.5 ? '#c73605' :
+           d > 3 ? '#c79605' :
+           d > 2.5 ? '#c7c705' :
+           d > 2 ? '#96c705' :
+           d > 1.5 ? '#66c705' :
+           d > 1 ? '#05c705' : '#D3D3D3';
 }
 
 function style(feature) {
@@ -40,7 +44,7 @@ function style(feature) {
         color: 'white',
         dashArray: '3',
         fillOpacity: 0.7,
-        fillColor: '#D3D3D3'
+        fillColor: getColor(parseInt(feature.properties.SEVERITY))
     };
 }
 
@@ -82,8 +86,11 @@ function onEachFeature(feature, layer) {
     });
 }
 
-//map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+map.attributionControl.addAttribution('Crash data CC BY-NC-SA 4.0; <a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents/data">Sobhan Moosavi</a>');
 
+function resetMap() {
+    map.setView([37.8, -96], 4);
+}
 
 //const legend = L.control({ position: 'bottomright' });
 
