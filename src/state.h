@@ -17,12 +17,13 @@ public:
 	State();
 	~State();
 
-	void AddTotalSeverity(string severity);
-	double GetAvgSeverity();
+	void AddTotalSeverity(string severity, string county);
+	double GetAvSeverity();
 	void AddCounty(County county); 
 	void SetName(string state);
 
 	bool IsCountyHere(string county);
 	County FindCounty(string county); 
 	string GetName(); 
+	void PrintCounties();
 };
