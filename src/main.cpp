@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "../api/Traffic is Bad/json.hpp"
 #include "county.h"
 #include "state.h"
 #include "AdjList.h"
@@ -14,7 +15,11 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
-using std::ifstream; 
+using std::ifstream;
+using std::ofstream;
+
+using json = nlohmann::json;
+using json::parse;
 
 
 int main() {
@@ -75,7 +80,59 @@ int main() {
 	//cout << "end" << endl;
 
 	//make json
+	ifstream county_data("../api/Traffic is Bad/county_data.json");
+	json county_json;
+	string obj = "";
+	string line2 = "";
+	string county = "";
+	string state = "";
+	County county_obj;
 
+	getline(county_data, line2);
+	getline(county_data, line2);
+	getline(county_data, line2);
+
+	while (!county_data.eof()) {
+		getline(county_data, line2);
+		if (line2 == "{") {
+			json json_obj = json::parse(obj);
+			county = json_obj["COUNTY"];
+			state = json_obj["STATE"];
+			if (!adj_list.CheckCounty(state, county)) {
+				county_obj = adj_list.GetCountyObj(state, county);
+				json_obj["SEVERITY"] = to_string(county_obj.GetAvgSeverity());
+				json_obj["WFAIR"] = to_string(county_obj.GetWeather("Fair"));
+				json_obj["WCLOUDY"] = to_string(county_obj.GetWeather("Cloudy"));
+				json_obj["WFOG"] = to_string(county_obj.GetWeather("Fog"));
+				json_obj["WRAIN"] = to_string(county_obj.GetWeather("Rain"));
+				json_obj["WSNOW"] = to_string(county_obj.GetWeather("Snow"));
+				json_obj["CROSSING"] = to_string(county_obj.GetCrossing());
+				json_obj["JUNCTION"] = to_string(county_obj.GetJunction());
+				json_obj["STOP"] = to_string(county_obj.GetStop());
+				json_obj["SIGNAL"] = to_string(county_obj.GetSignal());
+				json_obj["DAY"] = to_string(county_obj.GetDay());
+				json_obj["NIGHT"] = to_string(county_obj.GetNight());
+				json_obj["POOR_VISIBILITY"] = to_string(county_obj.GetAvgVisibility());
+			}
+			else {
+				json_obj["SEVERITY"] = "0";
+				json_obj["WFAIR"] = "0";
+				json_obj["WCLOUDY"] = "0";
+				json_obj["WFOG"] = "0";
+				json_obj["WRAIN"] = "0";
+				json_obj["WSNOW"] = "0";
+				json_obj["CROSSING"] = "0";
+				json_obj["JUNCTION"] = "0";
+				json_obj["STOP"] = "0";
+				json_obj["SIGNAL"] = "0";
+				json_obj["DAY"] = "0";
+				json_obj["NIGHT"] = "0";
+				json_obj["POOR_VISIBILITY"] = "0";
+			}
+		}
+		else
+			obj += line2;
+	}
 
 	return 0;
 }
