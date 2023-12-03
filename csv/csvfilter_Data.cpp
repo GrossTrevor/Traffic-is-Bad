@@ -20,6 +20,8 @@ int main() {
 	string line = ""; 
 	string total = "";
 	string sum = "";
+	string county = "";
+	string state = "";
 
 	while (!infile.eof()) {
 		total = "";
@@ -40,9 +42,156 @@ int main() {
 		getline(infile, line, ','); //street
 		getline(infile, line, ','); //city 
 		getline(infile, line, ','); //county 
-		sum += line + ","; 
+		county = line;
+		//sum += line + ","; 
 		getline(infile, line, ','); //state
-		sum += line + ",";
+		state = line;
+		//sum += line + ",";
+
+		if (county == "District Of Columbia") {
+			county = "District of Columbia";
+		}
+		else if (state == "MD" && county == "Baltimore City") {
+			county = "Baltimore (City)";
+		}
+		else if (state == "MD" && county == "Baltimore County") {
+			county = "Baltimore";
+		}
+		else if (state == "MO" & county == "St. Louis City") {
+			county = "St. Louis (City)";
+		}
+		else if (state == "MO" & county == "St. Louis County") {
+			county = "St. Louis";
+		}
+		else if (state == "NV" && county == "Carson City") {
+			county = "Carsin City (City)";
+		}
+		else if (state == "VA") {
+			if (county == "Richmond City") {
+				county = "Richmond (City)";
+			}
+			else if (county == "Richmond County") {
+				county = "Richmond";
+			}
+			else if (county == "Alexandria") {
+				county = "Alexandria (City)";
+			}
+			else if (county == "Alexandria City") {
+				county = "Alexandria (City)";
+			}
+			else if (county == "Chesapeake") {
+				county = "Chesapeake (City)";
+			}
+			else if (county == "Norfolk") {
+				county = "Norfolk (City)";
+			}
+			else if (county == "Hampton") {
+				county = "Hampton (City)";
+			}
+			else if (county == "Fredericksburg") {
+				county = "Fredericksburg (City)";
+			}
+			else if (county == "Fairfax City") {
+				county = "Fairfax (City)";
+			}
+			else if (county == "Fairfax County") {
+				county = "Fairfax";
+			}
+			else if (county == "Franklin County") {
+				county = "Franklin";
+			}
+			else if (county == "Bedford County") {
+				county = "Bedford";
+			}
+			else if (county == "Roanoke City") {
+				county = "Roanoke (City)";
+			}
+			else if (county == "Roanoke County") {
+				county = "Roanoke";
+			}
+			else if (county == "Manassas") {
+				county = "Manassas (City)";
+			}
+			else if (county == "Manassas Park") {
+				county = "Manassas Park (City)";
+			}
+			else if (county == "Newport News") {
+				county = "Newport News (City)";
+			}
+			else if (county == "Virginia Beach") {
+				county = "Virginia Beach (City)";
+			}
+			else if (county == "Harrisonburg") {
+				county = "Harrisonburg (City)";
+			}
+			else if (county == "Colonial Heights") {
+				county = "Colonial Heights (City)";
+			}
+			else if (county == "Petersburg") {
+				county = "Petersburg (City)";
+			}
+			else if (county == "Waynesboro") {
+				county = "Waynesboro (City)";
+			}
+			else if (county == "Suffolk") {
+				county = "Suffolk (City)";
+			}
+			else if (county == "Lynchburg") {
+				county = "Lynchburg (City)";
+			}
+			else if (county == "Emporia") {
+				county = "Emporia (City)";
+			}
+			else if (county == "Bristol") {
+				county = "Bristol (City)";
+			}
+			else if (county == "Staunton"){
+				county = "Staunton (City)";
+			}
+			else if (county == "Charlottesville") {
+				county = "Charlottesville (City)";
+			}
+			else if (county == "Hopewell") {
+				county = "Hopewell (City)";
+			}
+			else if (county == "Covington") {
+				county = "Covington (City)";
+			}
+			else if (county == "Winchester") {
+				county = "Winchester (City)";
+			}
+			else if (county == "Williamsburg") {
+				county = "Williamsburg (City)";
+			}
+			else if (county == "Poquoson") {
+				county = "Poquoson (City)";
+			}
+			else if (county == "Danville") {
+				county = "Danville (City)";
+			}
+			else if (county == "Falls Church") {
+				county = "Falls Church (City)";
+			}
+			else if (county == "Martinsville") {
+				county = "Martinsville (City)";
+			}
+			else if (county == "Norton") {
+				county = "Norton (City)";
+			}
+			else if (county == "Portsmouth") {
+				county = "Portsmouth (City)";
+			}
+			else if (county == "Salem") {
+				county = "Salem (City)";
+			}
+			else if (county == "Isle Of Wight") {
+				county = "Isle of Wight";
+			}
+		}
+
+
+		sum += county + ",";
+		sum += state + ",";
 		getline(infile, line, ','); //zip code
 		getline(infile, line, ','); //country 
 		getline(infile, line, ','); //timezone

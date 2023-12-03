@@ -29,6 +29,6 @@ public:
 	County FindCounty(string county); 
 	string GetName(); 
 	int GetNumCounties();
-	vector<County> GetCountyVect()
+	vector<County>& GetCountyVect();
 	void PrintCounties();
 };

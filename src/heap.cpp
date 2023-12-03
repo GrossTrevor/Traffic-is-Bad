@@ -157,29 +157,26 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 					if (stateVect[i].FindCounty(county_).GetCounty() == county_) {
 						stateVect[i].AddTotalSeverity(severity, county_);
 
-						
+						vector<County> temp = stateVect[i].GetCountyVect();
 
-
-
-						stateVect[i].AddSeverity(severity);
-						stateVect[i].AddVisibility(visibility);
-						stateVect[i].ChangeWeather(w_con);
-						stateVect[i].AddCrossing(crossing);
-						stateVect[i].AddJunction(junction);
-						stateVect[i].AddStop(stop);
-						stateVect[i].AddSignal(signal);
-						stateVect[i].AddDayOrNight(time);
-						stateVect[i].AddToTotalCrashes();
+						temp[j].AddSeverity(severity);
+						temp[j].AddVisibility(visibility); 
+						temp[j].ChangeWeather(w_con); 
+						temp[j].AddCrossing(crossing); 
+						temp[j].AddJunction(junction);  
+						temp[j].AddStop(stop); 
+						temp[j].AddSignal(signal); 
+						temp[j].AddDayOrNight(time); 
+						temp[j].AddToTotalCrashes(); 
 					}
 				}
-
-				stateVect[i].IsCountyHere(county);
+				//stateVect[i].IsCountyHere(county);
 			}
 		}
 
-		State temp = GetState(state);
+		/*State temp = GetState(state);
 		temp.AddTotalSeverity(severity, county_); 
-		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); 
+		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); */
 	}
 	HeapifyUp(stateVect.size());
 }
@@ -190,8 +187,8 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 
 // remove a county from the heap then heapify down
 State MaxHeap::ExtractMax() {
-	swap(countyVect[0], countyVect[stateVect.size()]);
-	State temp = countyVect[stateVect.size()];
+	swap(stateVect[0], stateVect[stateVect.size()]);
+	State temp = stateVect[stateVect.size()];
 	stateVect.pop_back();
 	HeapifyDown(0);
 	return temp;
