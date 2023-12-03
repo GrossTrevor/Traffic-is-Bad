@@ -45,7 +45,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.SEVERITY))
+                    fillColor: getColor(parseFloat(feature.properties.SEVERITY))
                 };
             },
             onEachFeature
@@ -61,7 +61,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.CROSSING))
+                    fillColor: getColor(parseFloat(feature.properties.CROSSING))
                 };
             },
             onEachFeature
@@ -77,7 +77,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.JUNCTION))
+                    fillColor: getColor(parseFloat(feature.properties.JUNCTION))
                 };
             },
             onEachFeature
@@ -93,7 +93,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.SIGNAL))
+                    fillColor: getColor(parseFloat(feature.properties.SIGNAL))
                 };
             },
             onEachFeature
@@ -109,7 +109,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.DAY))
+                    fillColor: getColor(parseFloat(feature.properties.DAY))
                 };
             },
             onEachFeature
@@ -125,7 +125,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.NIGHT))
+                    fillColor: getColor(parseFloat(feature.properties.NIGHT))
                 };
             },
             onEachFeature
@@ -141,7 +141,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.POOR_VISIBILITY))
+                    fillColor: getColor(parseFloat(feature.properties.POOR_VISIBILITY))
                 };
             },
             onEachFeature
@@ -157,7 +157,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.WFAIR))
+                    fillColor: getColor(parseFloat(feature.properties.WFAIR))
                 };
             },
             onEachFeature
@@ -173,7 +173,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.WCLOUDY))
+                    fillColor: getColor(parseFloat(feature.properties.WCLOUDY))
                 };
             },
             onEachFeature
@@ -189,7 +189,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.WFOG))
+                    fillColor: getColor(parseFloat(feature.properties.WFOG))
                 };
             },
             onEachFeature
@@ -205,7 +205,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.WRAIN))
+                    fillColor: getColor(parseFloat(feature.properties.WRAIN))
                 };
             },
             onEachFeature
@@ -221,7 +221,7 @@ function filterMap(prop) {
                     color: 'white',
                     dashArray: '3',
                     fillOpacity: 0.7,
-                    fillColor: getColor(parseInt(feature.properties.WSNOW))
+                    fillColor: getColor(parseFloat(feature.properties.WSNOW))
                 };
             },
             onEachFeature
