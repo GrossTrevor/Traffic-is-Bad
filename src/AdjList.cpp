@@ -69,3 +69,14 @@ void AdjList::AddCounty(string state, string county, string severity, string vis
 		EditCounty(GetCountyObj(state, county), severity, visibility, w_con, crossing, junction, stop, signal, time);
 	}
 }
+
+void AdjList::PrintTesting() {
+	cout << "working" << endl; 
+	for (auto i = state_to_county.begin(); i != state_to_county.end(); i++) {
+		cout << i->first << ": " << endl;
+		for (int j = 0; j < i->second.size(); j++) {
+			cout << i->second[j].GetCounty() << ", ";
+		}
+		cout << endl;
+	}
+}

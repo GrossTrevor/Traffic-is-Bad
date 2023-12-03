@@ -1,5 +1,7 @@
 #pragma once
 #include <map>
+#include <iostream>
+#include <string>
 #include <vector>
 #include <iomanip> 
 #include <algorithm> 
@@ -9,6 +11,8 @@
 using std::map;
 using std::vector; 
 using std::string;
+using std::cout;
+using std::endl;
 
 
 class AdjList {
@@ -24,4 +28,6 @@ public:
 
 	bool CheckState(string state);  //check if state already exists  
 	bool CheckCounty(string state, string county); //check if county already exists 
+
+	void PrintTesting();
 };
