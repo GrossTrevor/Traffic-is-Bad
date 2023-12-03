@@ -10,8 +10,8 @@ State::~State() {
 	counties.clear(); 
 }
 
-void State::AddTotalSeverity(double severity) {
-	total_severity_counties += severity;
+void State::AddTotalSeverity(string severity) { 
+	total_severity_counties += stod(severity);
 }
 
 double State::GetAvgSeverity() { 

@@ -89,13 +89,13 @@ bool MaxHeap::SearchState(string state) {
 //	return obj; 
 //}
 
-State MaxHeap::GetState(string state) {
+State MaxHeap::GetState(string state) { 
 	for (int i = 0; i < numStates; i++) {
 		if (stateVect[i].GetName() == state) {
 			return stateVect[i];
 		}
 	}
-	County obj;
+	State obj;
 	return obj;
 }
 
@@ -140,7 +140,7 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 		stateVect.push_back(temp); 
 		numStates++; 
 	}
-	else if (!IsCountyHere(county_)){ //if state is found in heap but county is not found in the state 
+	else if (!SearchCounty(county_, state)){ //if state is found in heap but county is not found in the state 
 		County c_temp; 
 		c_temp = GetCountyObj(county_, state, severity, visibility, w_con, crossing, junction, stop, signal, time); 
 		State temp = GetState(state);
