@@ -1,8 +1,9 @@
+#pragma once
 #include "county.h"
 
 County::County() {
 	cost = make_pair("", "");
-	severity = 0;
+	total_severity = 0;
 
 	weather["Fair"] = 0;
 	weather["Cloudy"] = 0;
@@ -107,7 +108,7 @@ double County::GetAvgSeverity() {
 int County::GetAvgVisibility() {
 	int temp = 0;
 	for (int i = 0; i < visibility.size(); i++) {
-		temp += vibility[i];
+		temp += visibility[i]; 
 	}
 	return temp / visibility.size();
 }
@@ -135,7 +136,7 @@ int County::GetCrossing() {
 }
 
 int County::GetJunction() {
-	return junctions;
+	return junction;
 }
 
 int County::GetStop() {

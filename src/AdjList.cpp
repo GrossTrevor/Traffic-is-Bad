@@ -1,3 +1,4 @@
+#pragma once
 #include "AdjList.h"
 
 AdjList::AdjList() {
@@ -43,7 +44,7 @@ bool AdjList::CheckState(string state) {
 
 //return true if not found in map already
 bool AdjList::CheckCounty(string state, string county) {
-	if (!CheckState) {
+	if (!CheckState(state)) {   
 		auto it = state_to_county.find(state);
 		for (int i = 0; i < it->second.size(); i++) {
 			if (it->second[i].GetCounty() == county) {

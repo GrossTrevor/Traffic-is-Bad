@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -12,11 +11,12 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::stoi;
+using std::swap; 
 
 class MaxHeap
 {
 private:
-	vector<County*> countyVect;
+	vector<County> countyVect;
 	int numCounties;
 	void HeapifyUp(int index);
 	void HeapifyDown(int index);

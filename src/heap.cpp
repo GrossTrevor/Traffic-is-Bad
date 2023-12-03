@@ -8,10 +8,7 @@ MaxHeap::MaxHeap() {
 
 // destructor
 MaxHeap::~MaxHeap() {
-	for (int i = 0; i < numCounties; i++)
-	{
-		delete countyVect[i];
-	}
+	countyVect.clear(); 
 }
 
 // recursively heapify up
@@ -19,9 +16,9 @@ void MaxHeap::HeapifyUp(int index) {
 	while (index != 0) 
 	{
 		int parentIndex = (index - 1) / 2;
-		if (countyVect[index]->GetAvgSeverity() > countyVect[parentIndex]->GetAvgSeverity())
+		if (countyVect[index].GetAvgSeverity() > countyVect[parentIndex].GetAvgSeverity())
 		{
-			std::swap(countyVect[index], countyVect[parentIndex]);
+			swap(countyVect[index], countyVect[parentIndex]);
 			HeapifyUp(parentIndex);
 		}
 	}
@@ -33,17 +30,17 @@ void MaxHeap::HeapifyDown(int index) {
 	int rightChild = 2 * index + 2;
 	int largestIndex = index;
 
-	if (leftChild < numCounties && countyVect[leftChild]->GetAvgSeverity() > countyVect[largestIndex]->GetAvgSeverity()) 
+	if (leftChild < numCounties && countyVect[leftChild].GetAvgSeverity() > countyVect[largestIndex].GetAvgSeverity()) 
 	{
 		largestIndex = leftChild;
 	}
-	if (rightChild < numCounties && countyVect[rightChild]->GetAvgSeverity() > countyVect[largestIndex]->GetAvgSeverity())
+	if (rightChild < numCounties && countyVect[rightChild].GetAvgSeverity() > countyVect[largestIndex].GetAvgSeverity())
 	{
 		largestIndex = rightChild;
 	}
 	if (largestIndex != index)
 	{
-		std::swap(countyVect[index], countyVect[largest]);
+		swap(countyVect[index], countyVect[largestIndex]); 
 		HeapifyDown(largestIndex);
 	}
 }
@@ -119,16 +116,16 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 		EditCounty(temp, severity, visibility, w_con, crossing, junction, stop, signal, time); 
 	}
 
-	this->countyVect.push_back(temp); 
+	countyVect.push_back(temp); 
 	numCounties++; 
 	HeapifyUp(numCounties);
 }
 
 // remove a county from the heap then heapify down
-void MaxHeap::Remove() {
-	numCounties--;
-	swap(countyVect[0], countyVect[numCounties]); 
-	delete countyVect[numCounties];
-	HeapifyDown(0);
-}
+//void MaxHeap::Remove() {
+//	numCounties--;
+//	swap(countyVect[0], countyVect[numCounties]); 
+//	delete countyVect[numCounties];     need to add erase to make this line work 
+//	HeapifyDown(0);
+//}
 
