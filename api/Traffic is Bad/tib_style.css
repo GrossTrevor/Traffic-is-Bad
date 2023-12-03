@@ -220,9 +220,8 @@ html, body {
     }
 
 .severity {
-    background-color: #000000;
-    border: 0px;
-    color: white;
+    background: linear-gradient(0.25turn, #05c705, #c7c705, #c70505);
+    color: black;
     width: 175px;
     padding: 10px 24px;
     cursor: pointer;
@@ -230,7 +229,7 @@ html, body {
 }
 
     .severity:hover {
-        background-color: #000000;
+        background: linear-gradient(0.25turn, #037c03, #7c7c03, #7c0303);
     }
 
 .regenerate {
