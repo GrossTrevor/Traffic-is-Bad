@@ -32,9 +32,9 @@
         <div class="toggle-switch-container">
             <div class="toggle-switch switch-vertical">
                 <input id="toggle-a" type="radio" name="switch" checked="checked" />
-                <label for="toggle-a">Max Heap</label>
+                <label for="toggle-a">Adjacency List</label>
                 <input id="toggle-b" type="radio" name="switch" />
-                <label for="toggle-b">Adjacency List</label>
+                <label for="toggle-b">Max Heap</label>
                 <span class="toggle-outside">
                     <span class="toggle-inside"></span>
                 </span>
@@ -62,46 +62,46 @@
                 <button class="reset_map" onclick="resetMap()">Reset Map</button>
             </div>
             <div class="grid-item">
-                <button class="severity" onclick="filterMap(SEVERITY)">Severity</button>
+                <button class="severity" onclick="filterMap('SEVERITY')">Severity</button>
             </div>
             <div class="grid-item">
                 <button class="regenerate" onclick="regenerateMap()">Regenerate</button>
             </div>
             <div class="grid-item">
-                <button class="crossing" onclick="filterMap(CROSSING)">Crossing</button>
+                <button class="crossing" onclick="filterMap('CROSSING')">Crossing</button>
             </div>
             <div class="grid-item">
-                <button class="junction" onclick="filterMap(JUNCTION)">Junction</button>
+                <button class="junction" onclick="filterMap('JUNCTION')">Junction</button>
             </div>
             <div class="grid-item">
-                <button class="signal" onclick="filterMap(SIGNAL)">Signal</button>
+                <button class="signal" onclick="filterMap('SIGNAL')">Signal</button>
             </div>
             <div class="grid-item">
-                <button class="stop" onclick="filterMap(STOP)">Stop</button>
+                <button class="stop" onclick="filterMap('STOP')">Stop</button>
             </div>
             <div class="grid-item">
-                <button class="day" onclick="filterMap(DAY)">Day</button>
+                <button class="day" onclick="filterMap('DAY')">Day</button>
             </div>
             <div class="grid-item">
-                <button class="night" onclick="filterMap(NIGHT)">Night</button>
+                <button class="night" onclick="filterMap('NIGHT')">Night</button>
             </div>
             <div class="grid-item">
-                <button class="poor_visibility" onclick="filterMap(POOR_VISIBILITY)">Poor Visibility</button>
+                <button class="poor_visibility" onclick="filterMap('POOR_VISIBILITY')">Poor Visibility</button>
             </div>
             <div class="grid-item">
-                <button class="fair_weather" onclick="filterMap(WFAIR)">Fair (Weather)</button>
+                <button class="fair_weather" onclick="filterMap('WFAIR')">Fair (Weather)</button>
             </div>
             <div class="grid-item">
-                <button class="cloudy_weather" onclick="filterMap(WCLOUDY)">Cloudy (Weather)</button>
+                <button class="cloudy_weather" onclick="filterMap('WCLOUDY')">Cloudy (Weather)</button>
             </div>
             <div class="grid-item">
-                <button class="foggy_weather" onclick="filterMap(WFOGGY)">Foggy (Weather)</button>
+                <button class="foggy_weather" onclick="filterMap('WFOG')">Foggy (Weather)</button>
             </div>
             <div class="grid-item">
-                <button class="rainy_weather" onclick="filterMap(WRAINY)">Rainy (Weather)</button>
+                <button class="rainy_weather" onclick="filterMap('WRAIN')">Rainy (Weather)</button>
             </div>
             <div class="grid-item">
-                <button class="snowy_weather" onclick="filterMap(WSNOWY)">Snowy (Weather)</button>
+                <button class="snowy_weather" onclick="filterMap('WSNOW')">Snowy (Weather)</button>
             </div>
         </div>
 

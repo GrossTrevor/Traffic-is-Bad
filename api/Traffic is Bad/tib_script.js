@@ -22,7 +22,198 @@ info.update = function (props) {
 info.addTo(map);
 
 function filterMap(prop) {
-    style()
+    if (prop == 'SEVERITY') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.SEVERITY))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'CROSSING') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.CROSSING))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'JUNCTION') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.JUNCTION))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'SIGNAL') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.SIGNAL))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'DAY') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.DAY))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'NIGHT') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.NIGHT))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'POOR_VISIBILITY') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.POOR_VISIBILITY))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'WFAIR') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.WFAIR))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'WCLOUDY') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.WCLOUDY))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'WFOG') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.WFOG))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'WRAIN') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.WRAIN))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'WSNOW') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColor(parseInt(feature.properties.WSNOW))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
  }
 
 
@@ -35,17 +226,6 @@ function getColor(d) {
            d > 2 ? '#96c705' :
            d > 1.5 ? '#66c705' :
            d > 1 ? '#05c705' : '#D3D3D3';
-}
-
-function style(feature) {
-    return {
-        weight: 1,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7,
-        fillColor: getColor(parseInt(feature.properties.SEVERITY))
-    };
 }
 
 function highlightFeature(e) {
@@ -64,8 +244,16 @@ function highlightFeature(e) {
 }
 
 /* global statesData */
-const geojson = L.geoJson(county_data, {
-    style,
+var geojson = L.geoJson(county_data, {
+    style: function (feature) {
+        return {
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7,
+            fillColor: getColor(parseInt(feature.properties.SEVERITY)) };
+    },
     onEachFeature
 }).addTo(map);
 
