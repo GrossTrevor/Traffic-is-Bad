@@ -1,4 +1,3 @@
-//#pragma once
 #include "county.h"
 
 County::County() {

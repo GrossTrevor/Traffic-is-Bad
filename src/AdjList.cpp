@@ -1,4 +1,3 @@
-//#pragma once
 #include "AdjList.h"
 
 AdjList::AdjList() {
