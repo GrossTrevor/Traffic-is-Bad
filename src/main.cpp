@@ -18,6 +18,8 @@ using std::ifstream;
 int main() {
 	AdjList adj_list;
 
+	MaxHeap heap;
+
 
 	ifstream infile("US_Accidents_2022_Data.csv"); 
 	vector<string> info;
@@ -47,12 +49,13 @@ int main() {
 		info.push_back(line);			//sunrise/sunset = 9
 
 		//add to heap
-		
+		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 		
 		//add to adj list
-		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
+		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 	}
 
+	//make json
 
 	return 0;
 }

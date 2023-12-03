@@ -25,6 +25,10 @@ public:
 	~MaxHeap();
 	int GetHeapSize();
 	bool EmptyHeap();
-	void Insert(County* newCounty);
+	bool Search(string county, string state);
+	County GetCounty(string county, string state);
+	County GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
+	void EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
+	void Insert(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time);  
 	void Remove();
 };

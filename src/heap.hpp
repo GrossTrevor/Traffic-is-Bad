@@ -62,6 +62,52 @@ bool MaxHeap::EmptyHeap() {
 	return true;
 }
 
+//return true if county is found in heap 
+bool MaxHeap::Search(string county, string state) {
+	for (int i = 0; i < numCounties; i++) {
+		if (countyVect[i].GetCounty() == county && countyVect[i].GetState() == state) {
+			return true;
+		}
+	}
+	return false;
+}
+
+County MaxHeap::GetCounty(string county, string state) {
+	for (int i = 0; i < numCounties; i++) {
+		if (countyVect[i].GetCounty() == county && countyVect[i].GetState() == state) {
+			return countyVect[i];
+		}
+	}
+}
+
+County MaxHeap::GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
+	County county;
+	county.AddCountyAndState(county_, state);
+	county.AddSeverity(severity);
+	county.AddVisibility(visibility);
+	county.ChangeWeather(w_con);
+	county.AddCrossing(crossing);
+	county.AddJunction(junction);
+	county.AddStop(stop);
+	county.AddSignal(signal);
+	county.AddDayOrNight(time);
+	county.AddToTotalCrashes();
+
+	return county;
+}
+
+void MaxHeap::EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
+	county.AddSeverity(severity);
+	county.AddVisibility(visibility);
+	county.ChangeWeather(w_con);
+	county.AddCrossing(crossing);
+	county.AddJunction(junction);
+	county.AddStop(stop);
+	county.AddSignal(signal);
+	county.AddDayOrNight(time);
+	county.AddToTotalCrashes();
+}
+
 // insert a new county into the bottom of the heap then heapify up
 void MaxHeap::Insert(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
 	County temp; 
@@ -86,48 +132,3 @@ void MaxHeap::Remove() {
 	HeapifyDown(0);
 }
 
-//return true if county is found in heap 
-bool MaxHeap::Search(string county, string state) {
-	for (int i = 0; i < numCounties; i++) {
-		if (countyVect[i].GetCounty() == county && countyVect[i].GetState() == state) {
-			return true;
-		}
-	}
-	return false;
-}
-
-County MaxHeap::GetCounty(string county, string state) { 
-	for (int i = 0; i < numCounties; i++) {
-		if (countyVect[i].GetCounty() == county && countyVect[i].GetState() == state) {
-			return countyVect[i];
-		}
-	}
-}
-
-County MaxHeap::GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
-	County county; 
-	county.AddCountyAndState(county_, state);  
-	county.AddSeverity(severity);
-	county.AddVisibility(visibility);
-	county.ChangeWeather(w_con);
-	county.AddCrossing(crossing);
-	county.AddJunction(junction);
-	county.AddStop(stop);
-	county.AddSignal(signal);
-	county.AddDayOrNight(time);
-	county.AddToTotalCrashes();
-
-	return county; 
-}
-
-void MaxHeap::EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
-	county.AddSeverity(severity);
-	county.AddVisibility(visibility);
-	county.ChangeWeather(w_con);
-	county.AddCrossing(crossing);
-	county.AddJunction(junction);
-	county.AddStop(stop);
-	county.AddSignal(signal);
-	county.AddDayOrNight(time);
-	county.AddToTotalCrashes();
-}
