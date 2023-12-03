@@ -1,6 +1,8 @@
+#include "county.h"
+
 County::County() {
 	cost = make_pair("", "");
-	severity = 0;
+	total_severity = 0;
 
 	weather["Fair"] = 0;
 	weather["Cloudy"] = 0;
@@ -98,14 +100,14 @@ string County::GetCounty() {
 	return cost.first;
 }
 
-int County::GetAvgSeverity() {
+double County::GetAvgSeverity() {
 	return total_severity / total_crashes; 
 }
 
 int County::GetAvgVisibility() {
 	int temp = 0;
 	for (int i = 0; i < visibility.size(); i++) {
-		temp += vibility[i];
+		temp += visibility[i]; 
 	}
 	return temp / visibility.size();
 }
@@ -114,18 +116,19 @@ int County::GetWeather(string w_cond) {
 	if (w_cond == "Fair") {
 		return weather["Fair"];
 	}
-	else if (w_cond = "Cloudy") {
+	else if (w_cond == "Cloudy") {
 		return weather["Cloudy"];
 	}
-	else if (w_cond = "Rain") {
+	else if (w_cond == "Rain") {
 		return weather["Rain"];
 	}
-	else if (w_cond = "Fog") {
+	else if (w_cond == "Fog") {
 		return weather["Fog"];
 	}
-	else if (w_cond = "Snow") {
+	else if (w_cond == "Snow") {
 		return weather["Snow"];
 	}
+	return -1;
 }
 
 int County::GetCrossing() {
@@ -133,7 +136,7 @@ int County::GetCrossing() {
 }
 
 int County::GetJunction() {
-	return junctions;
+	return junction;
 }
 
 int County::GetStop() {

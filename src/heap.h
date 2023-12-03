@@ -1,21 +1,23 @@
 #pragma once
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "county.h"
+#include "state.h" 
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
+using std::stoi;
+using std::swap; 
 
 class MaxHeap
 {
-private:
-	vector<County*> countyVect;
-	int numCounties;
+	vector<State> stateVect;
+	int numStates;
 	void HeapifyUp(int index);
 	void HeapifyDown(int index);
 public:
@@ -23,6 +25,12 @@ public:
 	~MaxHeap();
 	int GetHeapSize();
 	bool EmptyHeap();
-	void Insert(County* newCounty);
-	void Remove();
+	bool SearchCounty(string county, string state);
+	bool SearchState(string state);
+	//County GetCounty(string county, string state);
+	State GetState(string state); 
+	County GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
+	void EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
+	void Insert(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time);  
+	//void Remove();
 };

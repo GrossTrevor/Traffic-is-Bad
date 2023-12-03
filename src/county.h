@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <county.hpp>
 
 using std::string;
 using std::vector;
 using std::pair;
+using std::map;
 using std::make_pair;
 using std::stod;
 
@@ -25,7 +25,7 @@ class County {
 	int night;
 	int total_crashes;
 
-private:
+public:
 	County();
 	void ChangeWeather(string w_state);
 	void AddVisibility(string visible);
@@ -41,7 +41,7 @@ private:
 	string GetCounty();
 	string GetState();
 
-	int GetAvgSeverity();
+	double GetAvgSeverity();
 	int GetAvgVisibility();
 	int GetWeather(string w_cond);
 	int GetCrossing();

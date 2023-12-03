@@ -4,6 +4,10 @@
 #include <vector>
 #include <algorithm>
 #include "county.h"
+#include "state.h"
+#include "AdjList.h"
+#include "heap.h"
+
 
 using std::cin;
 using std::cout;
@@ -14,54 +18,57 @@ using std::ifstream;
 
 
 int main() {
+	cout << "work pls I love you ." << endl;
+	//AdjList adj_list;
 
-	//future work!!!!!!!!!!
-	//make vector of county objects, check if county + state is already in heap/hash (using the two get functions to check if the state and county are correct)
-	//if not, make new county obj, then add to heap/hash
-	//if it is, get obj and add to it
+	MaxHeap heap;
 
+	int count = 0;
 
-	ifstream infile("US_Accidents_2022_Data.csv"); 
+	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
+	vector<string> info;
 	string line = "";
-	string state = "";
-	string severity = "";
-	string county = "";
 
 
-	//right now, making obj for every crash -> not wanted, no way of knowing county is already created 
 	while (!infile.eof()) {
-		County c_obj;
-
-		getline(infile, severity, ','); 
-		c_obj.AddSeverity(severity);  
-		getline(infile, county, ',');  
-		getline(infile, state, ',');  
-		c_obj.AddCountyAndState(county, state); 
-
-		//search through data structures here, edit or add to county 
-		//use state and county strings to search 
-
-		getline(infile, line, ',');
-		c_obj.AddVisibility(line); 
-		getline(infile, line, ',');
-		c_obj.ChangeWeather(line);
-		getline(infile, line, ',');
-		c_obj.AddCrossing(line);
 		getline(infile, line, ','); 
-		c_obj.AddJunction(line);
+		info.push_back(line);			//severity = 0
+		getline(infile, line, ',');  
+		info.push_back(line);			//county = 1
+		getline(infile, line, ',');  
+		info.push_back(line);			//state = 2
+		getline(infile, line, ',');
+		info.push_back(line);			//visibility = 3
+		getline(infile, line, ',');
+		info.push_back(line);			//weather = 4
+		getline(infile, line, ',');
+		info.push_back(line);			//crossing = 5
 		getline(infile, line, ','); 
-		c_obj.AddStop(line);
+		info.push_back(line);			//junction = 6
 		getline(infile, line, ','); 
-		c_obj.AddSignal(line);
+		info.push_back(line);			//stop = 7
+		getline(infile, line, ','); 
+		info.push_back(line);			//traffic signal = 8
 		getline(infile, line);
-		c_obj.AddDayOrNight(line);
+		info.push_back(line);			//sunrise/sunset = 9
 
-		c_obj.AddToTotalCrashes();
+		count++;
+		cout << count << endl;
 
 		//add to heap
-		//add to hash
+		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		
+		//add to adj list
+		//adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+
+		info.clear();
 	}
 
+	//adj_list.PrintTesting(); 
+
+	cout << "end" << endl;
+
+	//make json
 
 	return 0;
 }
