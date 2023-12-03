@@ -41,7 +41,7 @@ public:
 	string GetCounty();
 	string GetState();
 
-	int GetAvgSeverity();
+	double GetAvgSeverity();
 	int GetAvgVisibility();
 	int GetWeather(string w_cond);
 	int GetCrossing();

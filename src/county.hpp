@@ -100,7 +100,7 @@ string County::GetCounty() {
 	return cost.first;
 }
 
-int County::GetAvgSeverity() {
+double County::GetAvgSeverity() {
 	return total_severity / total_crashes; 
 }
 

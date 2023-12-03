@@ -4,12 +4,14 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "county.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
+using std::stoi;
 
 class MaxHeap
 {
