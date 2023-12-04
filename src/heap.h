@@ -26,10 +26,8 @@ public:
 	bool EmptyHeap();
 	bool SearchCounty(string county, string state);
 	bool SearchState(string state);
-	//County GetCounty(string county, string state);
 	State GetState(string state); 
 	County GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
-	void EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
 	void Insert(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time);  
 	void PrintStates();
 	void PrintTotalCrashes();

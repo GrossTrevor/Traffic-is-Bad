@@ -10,6 +10,7 @@ AdjList::~AdjList() {
 	state_to_county.clear();
 }
 
+//return county object of specified county 
 County AdjList::GetCountyObj(string state, string county) {
 	auto itr = state_to_county.find(state);
 	for (int i = 0; i < itr->second.size(); i++) {  
@@ -19,18 +20,6 @@ County AdjList::GetCountyObj(string state, string county) {
 	}
 	County obj; 
 	return obj; 
-}
-
-void AdjList::EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
-	county.AddToTotalCrashes();
-	county.AddSeverity(severity);
-	county.AddVisibility(visibility);
-	county.ChangeWeather(w_con);
-	county.AddCrossing(crossing);
-	county.AddJunction(junction);
-	county.AddStop(stop);
-	county.AddSignal(signal);
-	county.AddDayOrNight(time);
 }
 
 //return true if key not found in map 
@@ -56,6 +45,7 @@ bool AdjList::CheckCounty(string state, string county) {
 	return true;
 }
 
+//adds/edits specified county and state 
 void AdjList::AddCounty(string state, string county_, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
 	County county;
 	//if county isn't in the specific state 
@@ -71,11 +61,10 @@ void AdjList::AddCounty(string state, string county_, string severity, string vi
 		county.AddStop(stop);
 		county.AddSignal(signal);
 		county.AddDayOrNight(time);
-		//EditCounty(county_obj, severity, visibility, w_con, crossing, junction, stop, signal, time);
 		state_to_county[state].push_back(county);
 	}
 	else {
-
+		//edits existing county data (add 1 more accident)
 		auto itr = state_to_county.find(state);
 		for (int i = 0; i < itr->second.size(); i++) {
 			if (itr->second[i].GetCounty() == county_) {
@@ -90,26 +79,10 @@ void AdjList::AddCounty(string state, string county_, string severity, string vi
 				itr->second[i].AddDayOrNight(time);  
 			}
 		}
-
-		//cout << "get visibility in insert: " << GetCountyObj(state, county_).GetAvgVisibility() << endl;
-
-		//county = GetCountyObj(state, county_);
-		//GetCountyObj(state, county_).AddCountyAndState(county_, state);
-		/*GetCountyObj(state, county_).AddToTotalCrashes();
-		county.AddSeverity(severity);
-		county.AddVisibility(visibility);
-		county.ChangeWeather(w_con);
-		county.AddCrossing(crossing);
-		county.AddJunction(junction);
-		county.AddStop(stop);
-		county.AddSignal(signal);
-		county.AddDayOrNight(time);*/
- 
-
-		//EditCounty(GetCountyObj(state, county_), severity, visibility, w_con, crossing, junction, stop, signal, time); 
 	}
 }
 
+//prints states and coutnies data 
 void AdjList::PrintTesting() {
 	for (auto i = state_to_county.begin(); i != state_to_county.end(); i++) {
 		cout << i->first << ": " << endl;
@@ -123,6 +96,7 @@ void AdjList::PrintTesting() {
 	}
 }
 
+//prints the total crashes of the whole map (every county in every state)
 void AdjList::PrintTotalCrashes() {
 	int sum = 0;
 	for (auto it = state_to_county.begin(); it != state_to_county.end(); it++) {
