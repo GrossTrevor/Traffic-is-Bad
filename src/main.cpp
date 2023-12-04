@@ -17,16 +17,24 @@ using std::vector;
 using std::ifstream;
 using std::ofstream;
 
-int main() {
-	AdjList adj_list;
+//using json = nlohmann::json;
+//using json::parse;
 
+
+int main() {
+	//comment out either of these lines to include either the adj_list or max_heap
+	AdjList adj_list;
 	//MaxHeap heap;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
 	vector<string> info;
 	string line = "";
 
-	while (!infile.eof()) {
+	string t;
+	string c;
+	//int x = 27;
+
+	while (!infile.eof() /*&& x != 0*/) {
 		getline(infile, line, ','); 
 		info.push_back(line);			//severity = 0
 		getline(infile, line, ',');  
@@ -59,9 +67,13 @@ int main() {
 		info.clear();
 	}
 
-	//MAKE JS FILE FROM ADJACENCY LIST
-	ifstream county_data("../api/Traffic is Bad/county_dataPre.js");
-	ofstream county_data2("../api/Traffic is Bad/county_data.js");
+	adj_list.PrintTesting(); 
+
+
+	//make json
+	ifstream county_data("../api/Traffic is Bad/county_data.json");
+	json county_json;
+	string obj = "";
 	string line2 = "";
 	string county = "";
 	string state = "";
@@ -136,8 +148,8 @@ int main() {
 				getline(county_data, line2);
 			}
 		}
-		else if (line2.length() < 18 || (line2.length() > 14 && !(line2.substr(9, 6) == "COUNTY" || line2.substr(9, 8) == "SEVERITY" || line2.substr(9, 8) == "CROSSING" || line2.substr(9, 3) == "DAY" || line2.substr(9, 8) == "JUNCTION" || line2.substr(9, 5) == "NIGHT" || line2.substr(9, 15) == "POOR_VISIBILITY" || line2.substr(9, 6) == "SIGNAL" || line2.substr(9, 4) == "STOP" || line2.substr(9, 5) == "WFAIR" || line2.substr(9, 7) == "WCLOUDY" || line2.substr(9, 4) == "WFOG" || line2.substr(9, 5) == "WRAIN" || line2.substr(9, 5) == "WSNOW")))
-			county_data2 << line2 << endl;
+		else
+			obj += line2;
 	}
 
 	return 0;

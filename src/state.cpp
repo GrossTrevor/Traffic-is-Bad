@@ -59,12 +59,33 @@ int State::GetNumCounties() {
 	return counties.size();
 }
 
+int State::GetTotalCrashesState() {
+	int sum = 0;
+	for (int i = 0; i < counties.size(); i++) {
+		sum += counties[i].GetTotalCrashes();
+	}
+	return sum;
+}
+
 vector<County>& State::GetCountyVect() {
 	return counties;
 }
 
-//void State::PrintCounties() {
-//	for (int i = 0; i < counties.size(); i++) {
-//		cout << counties[i] << ", " << endl;
-//	}
-//}
+County& State::GiveCounty(string county) {
+	for (int i = 0; i < counties.size(); i++) {
+		if (counties[i].GetCounty() == county) {
+			return counties[i];
+		}
+	}
+	County obj;
+	return obj;
+}
+
+void State::PrintCounties() {
+	for (int i = 0; i < counties.size(); i++) {
+		cout << counties[i].GetCounty() << ": " << endl;
+		cout << counties[i].GetAvgSeverity() << ", " << counties[i].GetAvgVisibility() << ", " << counties[i].GetWeather("Fair") << ", " << counties[i].GetWeather("Cloudy") << ", " << counties[i].GetWeather("Rain") << ", ";
+		cout << counties[i].GetWeather("Fog") << ", " << counties[i].GetWeather("Snow") << ", " << counties[i].GetCrossing() << ", " << counties[i].GetJunction() << ", " << counties[i].GetStop() << ", ";
+		cout << counties[i].GetSignal() << ", " << counties[i].GetDay() << ", " << counties[i].GetNight() << ", " << counties[i].GetTotalCrashes() << endl; 
+	}
+}

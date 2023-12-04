@@ -30,4 +30,5 @@ public:
 	bool CheckCounty(string state, string county); //check if county already exists 
 
 	void PrintTesting();
+	void PrintTotalCrashes(); 
 };

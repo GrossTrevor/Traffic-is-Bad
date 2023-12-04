@@ -32,5 +32,7 @@ public:
 	void EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time); 
 	void Insert(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time);  
 	void PrintStates();
+	void PrintTotalCrashes();
+	void PrintCounties();
 	State ExtractMax();
 };
