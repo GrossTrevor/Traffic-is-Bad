@@ -122,4 +122,14 @@ void AdjList::PrintTesting() {
 		cout << endl;
 	}
 }
+
+void AdjList::PrintTotalCrashes() {
+	int sum = 0;
+	for (auto it = state_to_county.begin(); it != state_to_county.end(); it++) {
+		for (int i = 0; i < it->second.size(); i++) {
+			sum += it->second[i].GetTotalCrashes();
+		}
+	}
+	cout << "total crashes: " << sum << endl;
+}
  

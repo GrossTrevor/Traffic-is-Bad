@@ -59,6 +59,14 @@ int State::GetNumCounties() {
 	return counties.size();
 }
 
+int State::GetTotalCrashesState() {
+	int sum = 0;
+	for (int i = 0; i < counties.size(); i++) {
+		sum += counties[i].GetTotalCrashes();
+	}
+	return sum;
+}
+
 vector<County>& State::GetCountyVect() {
 	return counties;
 }

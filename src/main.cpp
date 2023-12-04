@@ -18,13 +18,13 @@ using std::vector;
 using std::ifstream;
 using std::ofstream;
 
-using json = nlohmann::json;
-using json::parse;
+//using json = nlohmann::json;
+//using json::parse;
 
 
 int main() {
+	//comment out either of these lines to include either the adj_list or max_heap
 	//AdjList adj_list;
-
 	MaxHeap heap;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
@@ -33,9 +33,10 @@ int main() {
 
 	string t;
 	string c;
-	int x = 100000;
+	//int x = 100000;
 
-	while (!infile.eof() && x != 0) {
+	//read through the file that has the different data points (crashes)
+	while (!infile.eof() /*&& x != 0*/) {
 		getline(infile, line, ','); 
 		info.push_back(line);			//severity = 0
 		getline(infile, line, ',');  
@@ -60,24 +61,21 @@ int main() {
 
 		//add to heap
 		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
-
-		/*cout << heap.GetState(info[2]).GetName() << ": " << endl;
-		heap.GetState(info[2]).PrintCounties();
-		cout << endl;*/
 		
 		//add to adj list
 		//adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 
 
 		info.clear();
-		x--;
+		//x--;
 	}
 
-	//cout << "here" << endl;
 
 	//adj_list.PrintTesting(); 
+	//adj_list.PrintTotalCrashes();
 
-	heap.PrintStates();
+	//heap.PrintStates();
+	heap.PrintTotalCrashes();
 
 
 	//make json

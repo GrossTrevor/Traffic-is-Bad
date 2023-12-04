@@ -68,6 +68,8 @@ bool MaxHeap::SearchCounty(string county, string state) {
 	return false;
 }
 
+
+//return true if state is found in heap 
 bool MaxHeap::SearchState(string state) {
 	for (int i = 0; i < stateVect.size(); i++) { 
 		if (stateVect[i].GetName() == state) {
@@ -166,15 +168,12 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 						stateVect[i].GiveCounty(county_).AddStop(stop);  
 						stateVect[i].GiveCounty(county_).AddSignal(signal);
 						stateVect[i].GiveCounty(county_).AddDayOrNight(time);
+						break;
 					}
 				}
-				//stateVect[i].IsCountyHere(county);
+				break;
 			}
 		}
-
-		/*State temp = GetState(state);
-		//temp.AddTotalSeverity(severity, county_); 
-		EditCounty(temp.FindCounty(state), severity, visibility, w_con, crossing, junction, stop, signal, time); */
 	}
 	HeapifyUp(stateVect.size());
 }
@@ -184,6 +183,19 @@ void MaxHeap::PrintStates() {
 		cout << stateVect[i].GetName() << ": " << endl;
 		stateVect[i].PrintCounties();
 	}
+}
+
+void MaxHeap::PrintTotalCrashes() {
+	int sum = 0;
+	for (int i = 0; i < stateVect.size(); i++) {
+		cout << "state: " << stateVect[i].GetName() << ": " << endl;
+		for (int j = 0; j < stateVect[i].GetNumCounties(); j++) {
+			vector<County> temp = stateVect[i].GetCountyVect();
+			cout << "county: " << temp[j].GetCounty() << " | crashes: " << temp[j].GetTotalCrashes() << endl;
+			sum += temp[j].GetTotalCrashes();
+		}
+	}
+	cout << "total crashes: " << sum << endl;
 }
 
 // remove a county from the heap then heapify down
