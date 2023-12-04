@@ -18,9 +18,9 @@ using std::ifstream;
 
 
 int main() {
-	AdjList adj_list;
+	//AdjList adj_list;
 
-	//MaxHeap heap;
+	MaxHeap heap;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
 	vector<string> info;
@@ -28,9 +28,9 @@ int main() {
 
 	string t;
 	string c;
-	//int x = 27;
+	int x = 80000;
 
-	while (!infile.eof() /*&& x != 0*/) {
+	while (!infile.eof() && x != 0) {
 		getline(infile, line, ','); 
 		info.push_back(line);			//severity = 0
 		getline(infile, line, ',');  
@@ -54,17 +54,25 @@ int main() {
 
 
 		//add to heap
-		//heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+
+		/*cout << heap.GetState(info[2]).GetName() << ": " << endl;
+		heap.GetState(info[2]).PrintCounties();
+		cout << endl;*/
 		
 		//add to adj list
-		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		//adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 
 
 		info.clear();
-		//x--;
+		x--;
 	}
 
-	adj_list.PrintTesting(); 
+	//cout << "here" << endl;
+
+	//adj_list.PrintTesting(); 
+
+	heap.PrintStates();
 
 
 	//make json

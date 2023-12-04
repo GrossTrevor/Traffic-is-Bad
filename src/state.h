@@ -30,5 +30,6 @@ public:
 	string GetName(); 
 	int GetNumCounties();
 	vector<County>& GetCountyVect();
+	County& GiveCounty(string county);
 	void PrintCounties();
 };
