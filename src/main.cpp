@@ -24,8 +24,8 @@ using std::ofstream;
 
 int main() {
 	//comment out either of these lines to include either the adj_list or max_heap
-	//AdjList adj_list;
-	MaxHeap heap;
+	AdjList adj_list;
+	//MaxHeap heap;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
 	vector<string> info;
@@ -60,10 +60,10 @@ int main() {
 
 
 		//add to heap
-		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		//heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 		
 		//add to adj list
-		//adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 
 
 		info.clear();
@@ -71,11 +71,11 @@ int main() {
 	}
 
 
-	//adj_list.PrintTesting(); 
+	adj_list.PrintTesting(); 
 	//adj_list.PrintTotalCrashes();
 
 	//heap.PrintStates();
-	heap.PrintTotalCrashes();
+	//heap.PrintCounties();
 
 
 	//make json

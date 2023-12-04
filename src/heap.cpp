@@ -176,12 +176,15 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 		}
 	}
 	HeapifyUp(stateVect.size());
+	if (stateVect.size() == 50) {
+		stateVect.pop_back();
+	}
 }
 
 void MaxHeap::PrintStates() {
 	for (int i = 0; i < stateVect.size(); i++) {
-		cout << stateVect[i].GetName() << ": " << endl;
-		stateVect[i].PrintCounties();
+		cout << stateVect[i].GetName() << endl;
+		cout << "_____________" << endl;
 	}
 }
 
@@ -196,6 +199,14 @@ void MaxHeap::PrintTotalCrashes() {
 		}
 	}
 	cout << "total crashes: " << sum << endl;
+}
+
+void MaxHeap::PrintCounties() {
+	//cout << "size: " << stateVect.size() << endl;
+	for (int i = 0; i < stateVect.size(); i++) {
+		cout << "state: " << stateVect[i].GetName() << ": " << endl;
+		stateVect[i].PrintCounties();
+	}
 }
 
 // remove a county from the heap then heapify down
