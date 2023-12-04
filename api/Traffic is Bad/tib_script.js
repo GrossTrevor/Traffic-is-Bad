@@ -444,7 +444,7 @@ fetch("input_clock.txt")
         return res.text();
     })
     .then(function (data) {
-        document.getElementById("input_clock").innerHTML = "C++ Data Input Time: " + data + " ms";
+        document.getElementById("input_clock").innerHTML = "C++ Data Input Time: " + data + " seconds";
     });
 
 fetch("output_clock.txt")
@@ -452,5 +452,5 @@ fetch("output_clock.txt")
         return res.text();
     })
     .then(function (data) {
-        document.getElementById("output_clock").innerHTML = "C++ Data Output Time: " + data + " ms";
+        document.getElementById("output_clock").innerHTML = "C++ Data Output Time: " + data + " seconds";
     });

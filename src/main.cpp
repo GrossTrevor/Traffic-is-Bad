@@ -23,9 +23,9 @@ int main() {
 	auto start_time = std::chrono::system_clock::now();
 
 	//choose which data structure to use 
-	AdjList adj_list;
-	//MaxHeap heap;
-
+	//AdjList adj_list;
+	MaxHeap heap;
+	
 	ifstream infile("../csv/US_Accidents_2022_Data.csv");
 	vector<string> info;
 	string line = "";
@@ -54,10 +54,10 @@ int main() {
 
 
 		//add to heap
-		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
 
 		//add to adj list
-		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
+		//adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
 
 
 		info.clear();
@@ -68,6 +68,9 @@ int main() {
 	ofstream input_clock("../api/Traffic is Bad/input_clock.txt");
 	input_clock << elapsed_time.count();
 
+	//starting timer
+	start_time = std::chrono::system_clock::now();
+	
 	/*
 	//MAKE JS FILE FROM ADJACENCY LIST
 	ifstream county_data("../api/Traffic is Bad/county_dataPre.js");
@@ -150,7 +153,7 @@ int main() {
 			county_data2 << line2 << endl;
 	}
 	*/
-
+	
 	//MAKE JS FILE FROM MAX HEAP
 	ifstream county_data("../api/Traffic is Bad/county_dataPre.js");
 	ofstream county_data2("../api/Traffic is Bad/county_dataHeap.js");
@@ -288,6 +291,12 @@ int main() {
 		county_data.seekg(0);
 	}
 	county_data2 << "      },\n		\"type\": \"Feature\"\n    }\n  ],\n};\n";
+	
+
+	//end the timer, get duration of extracting all accidents from data structure 
+	elapsed_time = std::chrono::system_clock::now() - start_time;
+	ofstream output_clock("../api/Traffic is Bad/output_clock.txt");
+	output_clock << elapsed_time.count();
 
 	return 0;
 }
