@@ -33,7 +33,7 @@ int main() {
 
 	string t;
 	string c;
-	int x = 80000;
+	int x = 100000;
 
 	while (!infile.eof() && x != 0) {
 		getline(infile, line, ','); 
@@ -81,7 +81,7 @@ int main() {
 
 
 	//make json
-	ifstream county_data("../api/Traffic is Bad/county_data.json");
+	/*ifstream county_data("../api/Traffic is Bad/county_data.json");
 	json county_json;
 	string obj = "";
 	string line2 = "";
@@ -133,7 +133,7 @@ int main() {
 		}
 		else
 			obj += line2;
-	}
+	}*/
 
 	return 0;
 }
