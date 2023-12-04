@@ -57,10 +57,10 @@ int main() {
 		else if (state == "MD" && county == "Baltimore County") {
 			county = "Baltimore";
 		}
-		else if (state == "MO" & county == "St. Louis City") {
+		else if (state == "MO" && county == "St. Louis City") {
 			county = "St. Louis (City)";
 		}
-		else if (state == "MO" & county == "St. Louis County") {
+		else if (state == "MO" && county == "St. Louis County") {
 			county = "St. Louis";
 		}
 		else if (state == "NV" && county == "Carson City") {
