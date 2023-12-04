@@ -17,29 +17,21 @@ using std::vector;
 using std::ifstream;
 using std::ofstream;
 
-//using json = nlohmann::json;
-//using json::parse;
-
-
 int main() {
-	//comment out either of these lines to include either the adj_list or max_heap
 	AdjList adj_list;
+
 	//MaxHeap heap;
 
-	ifstream infile("../csv/US_Accidents_2022_Data.csv"); 
+	ifstream infile("../csv/US_Accidents_2022_Data.csv");
 	vector<string> info;
 	string line = "";
 
-	string t;
-	string c;
-	//int x = 27;
-
-	while (!infile.eof() /*&& x != 0*/) {
-		getline(infile, line, ','); 
+	while (!infile.eof()) {
+		getline(infile, line, ',');
 		info.push_back(line);			//severity = 0
-		getline(infile, line, ',');  
+		getline(infile, line, ',');
 		info.push_back(line);			//county = 1
-		getline(infile, line, ',');  
+		getline(infile, line, ',');
 		info.push_back(line);			//state = 2
 		getline(infile, line, ',');
 		info.push_back(line);			//visibility = 3
@@ -47,11 +39,11 @@ int main() {
 		info.push_back(line);			//weather = 4
 		getline(infile, line, ',');
 		info.push_back(line);			//crossing = 5
-		getline(infile, line, ','); 
+		getline(infile, line, ',');
 		info.push_back(line);			//junction = 6
-		getline(infile, line, ','); 
+		getline(infile, line, ',');
 		info.push_back(line);			//stop = 7
-		getline(infile, line, ','); 
+		getline(infile, line, ',');
 		info.push_back(line);			//traffic signal = 8
 		getline(infile, line);
 		info.push_back(line);			//sunrise/sunset = 9
@@ -59,21 +51,17 @@ int main() {
 
 		//add to heap
 		//heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
-		
+
 		//add to adj list
-		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
+		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
 
 
 		info.clear();
 	}
 
-	adj_list.PrintTesting(); 
-
-
-	//make json
-	ifstream county_data("../api/Traffic is Bad/county_data.json");
-	json county_json;
-	string obj = "";
+	//MAKE JS FILE FROM ADJACENCY LIST
+	ifstream county_data("../api/Traffic is Bad/county_dataPre.js");
+	ofstream county_data2("../api/Traffic is Bad/county_data.js");
 	string line2 = "";
 	string county = "";
 	string state = "";
@@ -148,8 +136,8 @@ int main() {
 				getline(county_data, line2);
 			}
 		}
-		else
-			obj += line2;
+		else if (line2.length() < 18 || (line2.length() > 14 && !(line2.substr(9, 6) == "COUNTY" || line2.substr(9, 8) == "SEVERITY" || line2.substr(9, 8) == "CROSSING" || line2.substr(9, 3) == "DAY" || line2.substr(9, 8) == "JUNCTION" || line2.substr(9, 5) == "NIGHT" || line2.substr(9, 15) == "POOR_VISIBILITY" || line2.substr(9, 6) == "SIGNAL" || line2.substr(9, 4) == "STOP" || line2.substr(9, 5) == "WFAIR" || line2.substr(9, 7) == "WCLOUDY" || line2.substr(9, 4) == "WFOG" || line2.substr(9, 5) == "WRAIN" || line2.substr(9, 5) == "WSNOW")))
+			county_data2 << line2 << endl;
 	}
 
 	return 0;
