@@ -151,6 +151,7 @@ int main() {
 	string tempout = "";
 	County county_obj;
 	State state_obj;
+	vector<pair<string, string>> state_county;
 
 	while (!heap.EmptyHeap()) {
 		state_obj = heap.ExtractMax();
@@ -159,14 +160,14 @@ int main() {
 				getline(county_data, line2);
 				if (line2.length() > 14 && line2.substr(9, 6) == "COUNTY") {
 					county = line2.substr(19, line2.length() - 1 - 20);
-					county_data2 << line2 << endl;
+					tempout = line2 + '\n';
 				}
 				if (line2.length() > 14 && line2.substr(9, 5) == "STATE") {
 					state = line2.substr(18, line2.length() - 1 - 19);
-					cout << "state: " << state << " county: " << county << endl;
-					county_data2 << line2 << endl;
-					if ((state == state_obj.GetName()) && (heap.SearchCounty(county, state))) {
+					tempout = line2 + '\n';
+					if ((state == state_obj.GetName()) && !(heap.SearchCounty(county, state))) {
 						county_obj = state_obj.FindCounty(county);
+						county_data2 << tempout;
 						county_data2 << "        \"SEVERITY\": \"" << to_string(county_obj.GetAvgSeverity()) << "\"," << endl;
 						county_data2 << "        \"CROSSING\": \"" << to_string(county_obj.GetCrossing()) << "\"," << endl;
 						county_data2 << "        \"DAY\": \"" << to_string(county_obj.GetDay()) << "\"," << endl;
@@ -195,7 +196,8 @@ int main() {
 						getline(county_data, line2);
 						getline(county_data, line2);
 					}
-					else {
+					else if ((state == state_obj.GetName()) || ((find(state_county.begin(), state_county.end(), make_pair(county, state)) == state_county.end()) && ((state == "AK") || (state == "HI") || (state == "PR")))) {
+						state_county.push_back(make_pair(county, state));
 						county_data2 << "        \"SEVERITY\": \"0\"," << endl;
 						county_data2 << "        \"CROSSING\": \"0\"," << endl;
 						county_data2 << "        \"DAY\": \"0\"," << endl;
@@ -229,6 +231,8 @@ int main() {
 					county_data2 << line2 << endl;
 			}
 		}
+		county_data.clear();
+		county_data.seekg(0);
 	}
 
 	return 0;
