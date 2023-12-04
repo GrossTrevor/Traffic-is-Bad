@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 #include "county.h"
 #include "state.h"
 #include "AdjList.h"
@@ -18,6 +19,9 @@ using std::ifstream;
 using std::ofstream;
 
 int main() {
+	//starting timer
+	auto start_time = std::chrono::system_clock::now();
+
 	//choose which data structure to use 
 	//AdjList adj_list;
 	MaxHeap heap;
@@ -58,6 +62,9 @@ int main() {
 
 		info.clear();
 	}
+
+	//end the timer, get duration of inserting all accidents into data structure 
+	std::chrono::duration<double> elapsed_time = std::chrono::system_clock::now() - start_time;
 
 	/*
 	//MAKE JS FILE FROM ADJACENCY LIST
