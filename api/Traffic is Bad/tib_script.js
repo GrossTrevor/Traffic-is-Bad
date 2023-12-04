@@ -58,7 +58,7 @@ var geojson = L.geoJson(county_data, {
             color: 'white',
             dashArray: '3',
             fillOpacity: 0.7,
-            fillColor: getColorSeverity(parseInt(feature.properties.SEVERITY)) };
+            fillColor: getColorSeverity(parseFloat(feature.properties.SEVERITY)) };
     },
     onEachFeature
 }).addTo(map);
@@ -146,6 +146,22 @@ function filterMap(prop) {
                     dashArray: '3',
                     fillOpacity: 0.7,
                     fillColor: getColorSignal(parseFloat(feature.properties.SIGNAL))
+                };
+            },
+            onEachFeature
+        }).addTo(map);
+    }
+    else if (prop == 'STOP') {
+        geojson.removeFrom(map);
+        geojson = L.geoJson(county_data, {
+            style: function (feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7,
+                    fillColor: getColorStop(parseFloat(feature.properties.STOP))
                 };
             },
             onEachFeature
@@ -286,20 +302,24 @@ function filterMap(prop) {
 function getColorSeverity(d) {
     return d > 3.9 ? '#c70505' :
            d > 3.5 ? '#c73605' :
+           d > 3.2 ? '#c76605' :
            d > 3 ? '#c79605' :
            d > 2.5 ? '#c7c705' :
-           d > 2 ? '#96c705' :
-           d > 1.5 ? '#66c705' :
-           d > 1 ? '#05c705' : '#D3D3D3';
+           d > 2.3 ? '#96c705' :
+           d > 2.1 ? '#66c705' :
+           d > 2 ? '#36c705' :
+           d > 1.5 ? '#05c705' :
+           d > 1 ? '#05c736' : '#D3D3D3';
 }
 
 function getColorCrossing(d) {
-    return d > 3.9 ? '#6c134c' :
-           d > 3.5 ? '#981b6a' :
-           d > 3 ? '##c32288' :
-           d > 2.5 ? '#dd3ca2' :
-           d > 2 ? '#e467b6' :
-           d > 1.5 ? '#ec93cb' :
+    return d > 10000 ? '#410b2d' :
+           d > 3000 ? '#6c134c' :
+           d > 1000 ? '#981b6a' :
+           d > 300 ? '#c32288' :
+           d > 100 ? '#dd3ca2' :
+           d > 50 ? '#e467b6' :
+           d > 10 ? '#ec93cb' :
            d > 1 ? '#f4bee0' : '#D3D3D3';
 }
 
