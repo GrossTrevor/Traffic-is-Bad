@@ -152,83 +152,83 @@ int main() {
 	County county_obj;
 	State state_obj;
 
-	while (!county_data.eof()) {
-		cout << "WHERE ARE YOU AND IM SO SORRY" << endl;
+	while (!heap.EmptyHeap()) {
 		state_obj = heap.ExtractMax();
-		cout << "state: " << state_obj.GetName() << endl;
+		while (!county_data.eof()) {
+			for (int j = 0; j < state_obj.GetNumCounties(); j++) {
+				getline(county_data, line2);
+				if (line2.length() > 14 && line2.substr(9, 6) == "COUNTY") {
+					county = line2.substr(19, line2.length() - 1 - 20);
+					county_data2 << line2 << endl;
+				}
+				if (line2.length() > 14 && line2.substr(9, 5) == "STATE") {
+					state = line2.substr(18, line2.length() - 1 - 19);
+					cout << "state: " << state << " county: " << county << endl;
+					county_data2 << line2 << endl;
+					if ((state == state_obj.GetName()) && (heap.SearchCounty(county, state))) {
+						county_obj = state_obj.FindCounty(county);
+						county_data2 << "        \"SEVERITY\": \"" << to_string(county_obj.GetAvgSeverity()) << "\"," << endl;
+						county_data2 << "        \"CROSSING\": \"" << to_string(county_obj.GetCrossing()) << "\"," << endl;
+						county_data2 << "        \"DAY\": \"" << to_string(county_obj.GetDay()) << "\"," << endl;
+						county_data2 << "        \"JUNCTION\": \"" << to_string(county_obj.GetJunction()) << "\"," << endl;
+						county_data2 << "        \"NIGHT\": \"" << to_string(county_obj.GetNight()) << "\"," << endl;
+						county_data2 << "        \"POOR_VISIBILITY\": \"" << to_string(county_obj.GetAvgVisibility()) << "\"," << endl;
+						county_data2 << "        \"SIGNAL\": \"" << to_string(county_obj.GetSignal()) << "\"," << endl;
+						county_data2 << "        \"STOP\": \"" << to_string(county_obj.GetStop()) << "\"," << endl;
+						county_data2 << "        \"WFAIR\": \"" << to_string(county_obj.GetWeather("Fair")) << "\"," << endl;
+						county_data2 << "        \"WCLOUDY\": \"" << to_string(county_obj.GetWeather("Cloudy")) << "\"," << endl;
+						county_data2 << "        \"WFOG\": \"" << to_string(county_obj.GetWeather("Fog")) << "\"," << endl;
+						county_data2 << "        \"WRAIN\": \"" << to_string(county_obj.GetWeather("Rain")) << "\"," << endl;
+						county_data2 << "        \"WSNOW\": \"" << to_string(county_obj.GetWeather("Snow")) << "\"" << endl;
 
-		getline(county_data, line2);
-		if (line2.length() > 14 && line2.substr(9, 6) == "COUNTY") {
-			county = line2.substr(19, line2.length() - 1 - 20);
-			cout << "county: " << county << endl;
-			tempout = line2 + "\n";
-		}
-		if (line2.length() > 14 && line2.substr(9, 5) == "STATE") {
-			state = line2.substr(18, line2.length() - 1 - 19);
-			tempout = line2 + "\n";
-			if ((state == state_obj.GetName()) && (heap.SearchCounty(county, state))) {
-				county_obj = state_obj.FindCounty(county);
-				county_data2 << tempout;
-				county_data2 << "        \"SEVERITY\": \"" << to_string(county_obj.GetAvgSeverity()) << "\"," << endl;
-				county_data2 << "        \"CROSSING\": \"" << to_string(county_obj.GetCrossing()) << "\"," << endl;
-				county_data2 << "        \"DAY\": \"" << to_string(county_obj.GetDay()) << "\"," << endl;
-				county_data2 << "        \"JUNCTION\": \"" << to_string(county_obj.GetJunction()) << "\"," << endl;
-				county_data2 << "        \"NIGHT\": \"" << to_string(county_obj.GetNight()) << "\"," << endl;
-				county_data2 << "        \"POOR_VISIBILITY\": \"" << to_string(county_obj.GetAvgVisibility()) << "\"," << endl;
-				county_data2 << "        \"SIGNAL\": \"" << to_string(county_obj.GetSignal()) << "\"," << endl;
-				county_data2 << "        \"STOP\": \"" << to_string(county_obj.GetStop()) << "\"," << endl;
-				county_data2 << "        \"WFAIR\": \"" << to_string(county_obj.GetWeather("Fair")) << "\"," << endl;
-				county_data2 << "        \"WCLOUDY\": \"" << to_string(county_obj.GetWeather("Cloudy")) << "\"," << endl;
-				county_data2 << "        \"WFOG\": \"" << to_string(county_obj.GetWeather("Fog")) << "\"," << endl;
-				county_data2 << "        \"WRAIN\": \"" << to_string(county_obj.GetWeather("Rain")) << "\"," << endl;
-				county_data2 << "        \"WSNOW\": \"" << to_string(county_obj.GetWeather("Snow")) << "\"" << endl;
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+					}
+					else {
+						county_data2 << "        \"SEVERITY\": \"0\"," << endl;
+						county_data2 << "        \"CROSSING\": \"0\"," << endl;
+						county_data2 << "        \"DAY\": \"0\"," << endl;
+						county_data2 << "        \"JUNCTION\": \"0\"," << endl;
+						county_data2 << "        \"NIGHT\": \"0\"," << endl;
+						county_data2 << "        \"POOR_VISIBILITY\": \"0\"," << endl;
+						county_data2 << "        \"SIGNAL\": \"0\"," << endl;
+						county_data2 << "        \"STOP\": \"0\"," << endl;
+						county_data2 << "        \"WFAIR\": \"0\"," << endl;
+						county_data2 << "        \"WCLOUDY\": \"0\"," << endl;
+						county_data2 << "        \"WFOG\": \"0\"," << endl;
+						county_data2 << "        \"WRAIN\": \"0\"," << endl;
+						county_data2 << "        \"WSNOW\": \"0\"" << endl;
 
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+						getline(county_data, line2);
+					}
+				}
+				else if (line2.length() < 18 || (line2.length() > 14 && !(line2.substr(9, 6) == "COUNTY" || line2.substr(9, 8) == "SEVERITY" || line2.substr(9, 8) == "CROSSING" || line2.substr(9, 3) == "DAY" || line2.substr(9, 8) == "JUNCTION" || line2.substr(9, 5) == "NIGHT" || line2.substr(9, 15) == "POOR_VISIBILITY" || line2.substr(9, 6) == "SIGNAL" || line2.substr(9, 4) == "STOP" || line2.substr(9, 5) == "WFAIR" || line2.substr(9, 7) == "WCLOUDY" || line2.substr(9, 4) == "WFOG" || line2.substr(9, 5) == "WRAIN" || line2.substr(9, 5) == "WSNOW")))
+					county_data2 << line2 << endl;
 			}
-			else {
-				county_data2 << "        \"SEVERITY\": \"0\"," << endl;
-				county_data2 << "        \"CROSSING\": \"0\"," << endl;
-				county_data2 << "        \"DAY\": \"0\"," << endl;
-				county_data2 << "        \"JUNCTION\": \"0\"," << endl;
-				county_data2 << "        \"NIGHT\": \"0\"," << endl;
-				county_data2 << "        \"POOR_VISIBILITY\": \"0\"," << endl;
-				county_data2 << "        \"SIGNAL\": \"0\"," << endl;
-				county_data2 << "        \"STOP\": \"0\"," << endl;
-				county_data2 << "        \"WFAIR\": \"0\"," << endl;
-				county_data2 << "        \"WCLOUDY\": \"0\"," << endl;
-				county_data2 << "        \"WFOG\": \"0\"," << endl;
-				county_data2 << "        \"WRAIN\": \"0\"," << endl;
-				county_data2 << "        \"WSNOW\": \"0\"" << endl;
-
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-				getline(county_data, line2);
-			}
 		}
-		else if (line2.length() < 18 || (line2.length() > 14 && !(line2.substr(9, 6) == "COUNTY" || line2.substr(9, 8) == "SEVERITY" || line2.substr(9, 8) == "CROSSING" || line2.substr(9, 3) == "DAY" || line2.substr(9, 8) == "JUNCTION" || line2.substr(9, 5) == "NIGHT" || line2.substr(9, 15) == "POOR_VISIBILITY" || line2.substr(9, 6) == "SIGNAL" || line2.substr(9, 4) == "STOP" || line2.substr(9, 5) == "WFAIR" || line2.substr(9, 7) == "WCLOUDY" || line2.substr(9, 4) == "WFOG" || line2.substr(9, 5) == "WRAIN" || line2.substr(9, 5) == "WSNOW")))
-			county_data2 << line2 << endl;
 	}
 
 	return 0;
