@@ -23,8 +23,8 @@ int main() {
 	auto start_time = std::chrono::system_clock::now();
 
 	//choose which data structure to use 
-	//AdjList adj_list;
-	MaxHeap heap;
+	AdjList adj_list;
+	//MaxHeap heap;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv");
 	vector<string> info;
@@ -57,7 +57,7 @@ int main() {
 		heap.Insert(info[1], info[2], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]); 
 
 		//add to adj list
-		//adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
+		adj_list.AddCounty(info[2], info[1], info[0], info[3], info[4], info[5], info[6], info[7], info[8], info[9]);
 
 
 		info.clear();
@@ -65,6 +65,8 @@ int main() {
 
 	//end the timer, get duration of inserting all accidents into data structure 
 	std::chrono::duration<double> elapsed_time = std::chrono::system_clock::now() - start_time;
+	ofstream input_clock("../api/Traffic is Bad/input_clock.txt");
+	input_clock << elapsed_time.count();
 
 	/*
 	//MAKE JS FILE FROM ADJACENCY LIST

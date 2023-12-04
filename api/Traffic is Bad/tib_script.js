@@ -439,24 +439,18 @@ function getColorSnowy(d) {
            d > 1 ? '#7ab8b1' : '#D3D3D3';
 }
 
-//const legend = L.control({ position: 'bottomright' });
+fetch("input_clock.txt")
+    .then(function (res) {
+        return res.text();
+    })
+    .then(function (data) {
+        document.getElementById("input_clock").innerHTML = "C++ Data Input Time: " + data + " ms";
+    });
 
-//legend.onAdd = function (map) {
-
-//    const div = L.DomUtil.create('div', 'info legend');
-//    const grades = [0, 10, 20, 50, 100, 200, 500, 1000];
-//    const labels = [];
-//    let from, to;
-
-//    for (let i = 0; i < grades.length; i++) {
-//        from = grades[i];
-//        to = grades[i + 1];
-
-//        labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`);
-//    }
-
-//    div.innerHTML = labels.join('<br>');
-//    return div;
-//};
-
-//legend.addTo(map);
+fetch("output_clock.txt")
+    .then(function (res) {
+        return res.text();
+    })
+    .then(function (data) {
+        document.getElementById("output_clock").innerHTML = "C++ Data Output Time: " + data + " ms";
+    });
