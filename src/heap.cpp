@@ -50,6 +50,7 @@ int MaxHeap::GetHeapSize() {
 }
 
 // check if heap is empty
+//return false when heap is not emtpy 
 bool MaxHeap::EmptyHeap() {
 	if (stateVect.size() > 0) 
 	{
@@ -196,10 +197,12 @@ void MaxHeap::PrintCounties() {
 
 // remove a county from the heap then heapify down
 State MaxHeap::ExtractMax() {
-	swap(stateVect[0], stateVect[stateVect.size()]);
-	State temp = stateVect[stateVect.size()];
-	stateVect.pop_back();
-	HeapifyDown(0);
-	return temp;
+	if (!EmptyHeap()) {
+		swap(stateVect[0], stateVect[stateVect.size() - 1]);
+		State temp = stateVect[stateVect.size() - 1];
+		stateVect.pop_back();
+		HeapifyDown(0);
+		return temp;
+	}
 }
 
