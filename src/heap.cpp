@@ -79,18 +79,7 @@ bool MaxHeap::SearchState(string state) {
 	return false;
 }
 
-
-//warning: only use if the county already exists in state
-//County MaxHeap::GetCounty(string county, string state) {
-//	for (int i = 0; i < numStates; i++) {
-//		if (stateVect[i].GetName() == state) {
-//			return stateVect[i].FindCounty(county); 
-//		}
-//	}
-//	County obj;
-//	return obj; 
-//}
-
+//return a state object for specified state 
 State MaxHeap::GetState(string state) { 
 	for (int i = 0; i < stateVect.size(); i++) { 
 		if (stateVect[i].GetName() == state) {
@@ -101,6 +90,7 @@ State MaxHeap::GetState(string state) {
 	return obj;
 }
 
+//return county object with specified data (add initial data to new county)
 County MaxHeap::GetCountyObj(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
 	County county;
 	county.AddCountyAndState(county_, state);
@@ -117,18 +107,6 @@ County MaxHeap::GetCountyObj(string county_, string state, string severity, stri
 	return county;
 }
 
-void MaxHeap::EditCounty(County county, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) {
-	county.AddSeverity(severity);
-	county.AddVisibility(visibility);
-	county.ChangeWeather(w_con);
-	county.AddCrossing(crossing);
-	county.AddJunction(junction);
-	county.AddStop(stop);
-	county.AddSignal(signal);
-	county.AddDayOrNight(time);
-	county.AddToTotalCrashes();
-}
-
 // insert a new county into the bottom of the heap then heapify up
 void MaxHeap::Insert(string county_, string state, string severity, string visibility, string w_con, string crossing, string junction, string stop, string signal, string time) { 
 	//if state is not found in heap 
@@ -141,7 +119,8 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 		temp.AddCounty(c_temp); 
 		stateVect.push_back(temp);  
 	}
-	else if (!SearchCounty(county_, state)){ //if state is found in heap but county is not found in the state 
+	else if (!SearchCounty(county_, state)){ 
+		//if state is found in heap but county is not found in the state 
 		County c_temp; 
 		c_temp = GetCountyObj(county_, state, severity, visibility, w_con, crossing, junction, stop, signal, time); 
 
@@ -152,7 +131,8 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 			}
 		}
 	}
-	else { //state is found in heap and county already exists within state 
+	else { 
+		//state is found in heap and county already exists within state 
 		for (int i = 0; i < stateVect.size(); i++) {
 			if (stateVect[i].GetName() == state) {
 				for (int j = 0; j < stateVect[i].GetNumCounties(); j++) {
@@ -176,11 +156,14 @@ void MaxHeap::Insert(string county_, string state, string severity, string visib
 		}
 	}
 	HeapifyUp(stateVect.size());
+
+	//making sure vector is not adding more than states given
 	if (stateVect.size() == 50) {
 		stateVect.pop_back();
 	}
 }
 
+//prints only the states in the heap
 void MaxHeap::PrintStates() {
 	for (int i = 0; i < stateVect.size(); i++) {
 		cout << stateVect[i].GetName() << endl;
@@ -188,6 +171,7 @@ void MaxHeap::PrintStates() {
 	}
 }
 
+//prints the total crashes for each county and the total of all counties and states
 void MaxHeap::PrintTotalCrashes() {
 	int sum = 0;
 	for (int i = 0; i < stateVect.size(); i++) {
@@ -201,6 +185,7 @@ void MaxHeap::PrintTotalCrashes() {
 	cout << "total crashes: " << sum << endl;
 }
 
+//prints the data of each county in every state 
 void MaxHeap::PrintCounties() {
 	//cout << "size: " << stateVect.size() << endl;
 	for (int i = 0; i < stateVect.size(); i++) {

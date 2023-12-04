@@ -18,8 +18,8 @@ using std::ifstream;
 using std::ofstream;
 
 int main() {
+	//choose which data structure to use 
 	AdjList adj_list;
-
 	//MaxHeap heap;
 
 	ifstream infile("../csv/US_Accidents_2022_Data.csv");

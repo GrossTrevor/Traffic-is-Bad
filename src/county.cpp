@@ -19,6 +19,7 @@ County::County() {
 	total_crashes = 0.0;
 }
 
+//adds the specified weather condition 
 void County::ChangeWeather(string w_state) { 
 	if (w_state == "Fair") {
 		weather["Fair"] += 1;
@@ -38,12 +39,14 @@ void County::ChangeWeather(string w_state) {
 	//cannot use "else" because some crashes do not have some data points -> ensure they don't add things if they don't have the data 
 }
 
+//add another visibility point 
 void County::AddVisibility(string visible) {
 	if (visible != "") {
 		visibility.push_back(stod(visible));
 	}
 }
 
+//add day and night accidents 
 void County::AddDayOrNight(string time) {
 	if (time == "Day") {
 		day++;
@@ -54,40 +57,47 @@ void County::AddDayOrNight(string time) {
 	//cannot use "else" because some crashes do not have some data points -> ensure they don't add things if they don't have the data 
 }
 
+//add crossing accident 
 void County::AddCrossing(string line) {
 	if (line == "True") {
 		crossing++;
 	}
 }
 
+//add junction accident 
 void County::AddJunction(string line) {
 	if (line == "True") {
 		junction++;
 	}
 }
 
+//add stop accident 
 void County::AddStop(string line) {
 	if (line == "True") {
 		stop++;
 	}
 }
 
+//add signal accident 
 void County::AddSignal(string line) {
 	if (line == "True") {
 		signal++;
 	}
 }
 
+//add to total severity, average will be calculated using this total 
 void County::AddSeverity(string s) {
 	if (s != "") {
 		total_severity += stod(s);
 	}
 }
 
+//add the county and state name
 void County::AddCountyAndState(string county, string state) {
 	cost = make_pair(county, state);
 }
 
+//add the accident to the total accidents in the county 
 void County::AddToTotalCrashes() {
 	total_crashes += 1;
 }
@@ -100,11 +110,13 @@ string County::GetCounty() {
 	return cost.first;
 }
 
+//return the average severity of the county 
 double County::GetAvgSeverity() {
 	double temp = total_severity/total_crashes;
 	return temp; 
 }
 
+//return the average visibity of the accidents 
 double County::GetAvgVisibility() {
 	double temp = 0.0;
 	for (int i = 0; i < visibility.size(); i++) {
@@ -118,6 +130,7 @@ double County::GetAvgVisibility() {
 	return temp / visibility.size();
 }
 
+//returns the number of accidents for specified weather condition 
 int County::GetWeather(string w_cond) {
 	if (w_cond == "Fair") {
 		return weather["Fair"];
@@ -165,6 +178,3 @@ int County::GetTotalCrashes() {
 	return total_crashes;
 }
 
-string County::GetS() {
-	return to_string(GetAvgSeverity());
-}
