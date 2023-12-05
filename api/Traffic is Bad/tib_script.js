@@ -23,16 +23,30 @@ info.update = function (props) {
                               Stop: ${props.STOP}<br />
                               Day: ${props.DAY}<br />
                               Night: ${props.NIGHT}<br />
-                              Poor Visibility: ${props.POOR_VISIBILITY}<br />
+                              Visibility: ${props.POOR_VISIBILITY}<br />
                               Fair (Weather): ${props.WFAIR}<br />
                               Cloudy (Weather): ${props.WCLOUDY}<br />
                               Foggy (Weather): ${props.WFOG}<br />
                               Rainy (Weather): ${props.WRAIN}<br />
-                              Snowy (Weather): ${props.WSNOW}<br />` : 'Hover over a county';
+                              Snowy (Weather): ${props.WSNOW}<br />` : 'Hover over a county.';
     this._div.innerHTML = `<h4>Information Panel</h4>${contents}`;
 };
 
 info.addTo(map);
+
+var geojson = L.geoJson(county_data, {
+    style: function (feature) {
+        return {
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7,
+            fillColor: getColorSeverity(parseFloat(feature.properties.SEVERITY))
+        };
+    },
+    onEachFeature
+}).addTo(map);
 
 function highlightFeature(e) {
     const layer = e.target;
@@ -48,20 +62,6 @@ function highlightFeature(e) {
 
     info.update(layer.feature.properties);
 }
-
-/* global statesData */
-var geojson = L.geoJson(county_data, {
-    style: function (feature) {
-        return {
-            weight: 1,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.7,
-            fillColor: getColorSeverity(parseFloat(feature.properties.SEVERITY)) };
-    },
-    onEachFeature
-}).addTo(map);
 
 function resetHighlight(e) {
     geojson.resetStyle(e.target);

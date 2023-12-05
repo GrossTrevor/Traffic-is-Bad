@@ -19,26 +19,12 @@
 
     <div id='map'></div>
 
-    <script type="text/javascript" src="county_dataHeap.js"></script>
-
-    <script type="text/javascript" src="tib_script.js"></script>
+    <script type="text/javascript" src="county_data.js"></script>
 
     <div class="page">
 
         <div class="page_title">
             <h1>Traffic<br />is<br />bad.</h1>
-        </div>
-
-        <div class="toggle-switch-container">
-            <div class="toggle-switch switch-vertical">
-                <input id="toggle-a" type="radio" name="switch" checked="checked" />
-                <label for="toggle-a">Adjacency List</label>
-                <input id="toggle-b" type="radio" name="switch" />
-                <label for="toggle-b">Max Heap</label>
-                <span class="toggle-outside">
-                    <span class="toggle-inside"></span>
-                </span>
-            </div>
         </div>
 
         <div class="instructions">
@@ -47,9 +33,9 @@
             <ul>
                 <li>This application provides various information related to car crashes in <br />the mainland United States during 2022.</li>
                 <li>Hover over a county to see details regarding the car crashes that <br />occurred in that county.</li>
-                <li>Click on a county to zoom and use the legend to differentiate frequency.</li>
+                <li>Click on a county to zoom and use the colors to differentiate frequency.<br />The darker colors correspond to greater frequencies/averages.</li>
                 <li>Use the buttons on the right to change the filter of the data (average <br />severity is the default).</li>
-                <li>To change the data structure used to create the graph, flip the switch to <br />the left (max heap is the default).</li>
+                <li>To select the data structure to contstuct the map, you must manually <br />run the corresponding .exe from the build folder and refresh.</li>
                 <li>The execution time measures the total amount of time taken to build this <br />iteration. Notice the differences based on structure.</li>
                 <li>Thank you for using our tool! Safe travels!</li>
                 <li>Created by Trevor Gross, Samantha Bennett, and Lauren Dulick</li>
@@ -59,13 +45,13 @@
 
         <div class="grid-container">
             <div class="grid-item">
-                <button class="reset_map" onclick="resetMap()">Reset Map</button>
+                <button class="reset_map" onclick="resetMap()">Reset Viewpoint</button>
             </div>
             <div class="grid-item">
                 <button class="severity" onclick="filterMap('SEVERITY')">Severity</button>
             </div>
             <div class="grid-item">
-                <button class="regenerate" onclick="regenerateMap()">Regenerate</button>
+                <button class="zoom-gainesville" onclick="zoomGainesville()"></button>
             </div>
             <div class="grid-item">
                 <button class="crossing" onclick="filterMap('CROSSING')">Crossing</button>
@@ -86,7 +72,7 @@
                 <button class="night" onclick="filterMap('NIGHT')">Night</button>
             </div>
             <div class="grid-item">
-                <button class="poor_visibility" onclick="filterMap('POOR_VISIBILITY')">Poor Visibility</button>
+                <button class="poor_visibility" onclick="filterMap('POOR_VISIBILITY')">Visibility</button>
             </div>
             <div class="grid-item">
                 <button class="fair_weather" onclick="filterMap('WFAIR')">Fair (Weather)</button>
@@ -111,6 +97,8 @@
         <h3 id="input_clock"></h3>
         <h3 id="output_clock"></h3>
     </div>
+
+    <script type="text/javascript" src="tib_script.js"></script>
 
 </body>
 </html>

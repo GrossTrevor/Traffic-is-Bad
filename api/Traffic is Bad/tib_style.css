@@ -50,7 +50,7 @@ html, body {
 
 .page_title {
     text-align: left;
-    margin-right: 2.6%;
+    margin-right: 7%;
 }
 
     .page_title h1 {
@@ -61,123 +61,9 @@ html, body {
         letter-spacing: 3px;
     }
 
-/*COPIED CSS*/
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-.toggle-switch-container {
-    align-content: center;
-    padding: 0px;
-    margin-top: 6.5%;
-    margin-right: 8%;
-}
-
-.toggle-switch {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 10px;
-    position: relative;
-}
-
-    .toggle-switch input {
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-        .toggle-switch input:checked {
-            z-index: 1;
-        }
-
-            .toggle-switch input:checked + label {
-                opacity: 1;
-                cursor: default;
-            }
-
-        .toggle-switch input:not(:checked) + label:hover {
-            opacity: 0.5;
-        }
-
-    .toggle-switch label {
-        color: black;
-        opacity: 0.33;
-        cursor: pointer;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .toggle-switch .toggle-outside {
-        height: 100%;
-        border-radius: 17px;
-        padding: 11px;
-        overflow: hidden;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .toggle-switch .toggle-inside {
-        border-radius: 50%;
-        background: #424242;
-        position: absolute;
-        transition: all 0.3s ease-in-out;
-    }
-
-.switch-vertical {
-    background-color: #00F;
-    width: 0px;
-    height: 60px;
-    margin-left: 27px;
-}
-
-    .switch-vertical input {
-        height: 100%;
-        width: 60px;
-        right: 0;
-        margin: 0;
-    }
-
-    .switch-vertical label {
-        font-size: 15px;
-        line-height: 30px;
-        display: block;
-        width: 130px;
-        height: 50%;
-        margin: 0;
-        text-align: left;
-        padding-left: 12px;
-    }
-
-    .switch-vertical .toggle-outside {
-        background: cyan;
-        position: absolute;
-        width: 23px;
-        height: 100%;
-        right: 0;
-        top: 0;
-    }
-
-    .switch-vertical .toggle-inside {
-        height: 17px;
-        left: 3px;
-        top: 3px;
-        width: 17px;
-    }
-
-    .switch-vertical input:checked ~ .toggle-outside .toggle-inside {
-        top: 3px;
-    }
-
-    .switch-vertical input ~ input:checked ~ .toggle-outside .toggle-inside {
-        top: 40px;
-    }
-/*END COPIED CSS*/
-
 .instructions {
     text-align: left;
-    margin-right: 5%;
+    margin-right: 10.5%;
 }
 
     .instructions h2 {
@@ -232,7 +118,7 @@ html, body {
         background: linear-gradient(0.25turn, #037c03, #7c7c03, #7c0303);
     }
 
-.regenerate {
+.zoom-gainesville {
     background-color: #FFFFFF;
     border: 0px;
     color: black;
@@ -242,7 +128,7 @@ html, body {
     float: right;
 }
 
-    .regenerate:hover {
+    .zoom-gainesville:hover {
         background-color: #000000;
         color: white;
     }
@@ -414,6 +300,7 @@ html, body {
     .snowy_weather:hover {
         background-color: #749995;
     }
+
 
 .clocks {
     padding: 6px 8px;
