@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.8.34322.80
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Traffic is Bad", ".", "{0A09816C-4DD3-4CD9-9C71-13B18D90645C}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -36,6 +36,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F4D7F526-2393-4537-A342-6F5D8B14C77F}
+		SolutionGuid = {C81E571F-8EBB-4156-8984-97F43AEF0419}
 	EndGlobalSection
 EndGlobal
