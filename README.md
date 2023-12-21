@@ -31,7 +31,7 @@ Before running our application, you must, as of now, set up a locally hosted web
 </ul>
 
 ## Update Log
-1.0 (4-12-2023) - Full Release for Project Submission
+1.0 (04-12-2023) - Full Release for Project Submission
 
 ## References
 Moosavi, Sobhan, Mohammad Hossein Samavatian, Srinivasan Parthasarathy, and Rajiv Ramnath. “A Countrywide Traffic Accident Dataset.”, 2019.
